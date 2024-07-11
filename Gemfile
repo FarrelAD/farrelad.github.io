@@ -1,3 +1,3 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'hacked-jekyll', '~> 3.0'
+gem 'cvless', '~> 2.2'

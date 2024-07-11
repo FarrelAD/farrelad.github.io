@@ -1,4 +1,31 @@
-theme: hacked-jekyll
-
 title: Farrel Augusta Dinata
-description: A personal website to show everything from me
+description: A guy who learn about tech everyday
+baseurl: ""
+url: https://piazzai.github.io/cvless
+
+theme: cvless
+
+# site settings
+taglong: A guy who learn about tech everyday
+tagshort: A guy who learn about tech everyday
+
+# author settings
+author:
+  name: Farrel Augusta Dinata
+  email: fad.farrel@gmail.com
+photo: https://avatars.githubusercontent.com/u/140877757?v=4
+address: Indonesia
+
+# social media links
+social:
+  facebook: farrelad100
+  github: FarrelAD
+  instagram: farrel_rr
+  linkedin: farrelad
+
+# build settings
+permalink: pretty
+exclude:
+  - docker-compose.yml
+  - LICENSE
+  - README.md
