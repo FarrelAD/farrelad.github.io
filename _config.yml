@@ -1,7 +1,7 @@
 title: Farrel Augusta Dinata
 description: A guy who learn about tech everyday
 baseurl: ""
-url: https://github.com/FarrelAD
+url: https://piazzai.github.io/cvless
 
 theme: cvless
 
@@ -18,10 +18,10 @@ address: Indonesia
 
 # social media links
 social:
-  facebook: https://web.facebook.com/farrelad100/
-  github: https://github.com/FarrelAD
-  instagram: https://www.instagram.com/farrel_rr/
-  linkedin: https://www.linkedin.com/in/farrelad/
+  facebook: farrelad100
+  github: FarrelAD
+  instagram: farrel_rr
+  linkedin: farrelad
 
 # build settings
 permalink: pretty
