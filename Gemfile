@@ -1,3 +1,4 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-gem 'hacked-jekyll', '~> 3.0'
+source "https://rubygems.org"
+gemspec
