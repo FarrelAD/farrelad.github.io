@@ -1,46 +1,75 @@
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue';
+
+const showFirstTxt = ref(true);
+const showSubTxt = ref(false);
+
+onMounted(() => {
+    setTimeout(() => {
+        showFirstTxt.value = false
+    }, 1500)
+
+    setTimeout(() => {
+        showSubTxt.value = true
+    }, 3000)
+})
+
+</script>
+
 <template>
-    <main class="bg-gray-900 text-white container mx-auto mt-8 md:px-3 px-5">
-        <div class="border-2 p-3">
-            <h1 class="text-4xl font-bold">Farrel AD</h1>
-        </div>
-        <div class="border-2 mt-8 flex justify-center shadow-md shadow-cyan-800">
-            <a href="https://www.linkedin.com/in/farrelad" target="_blank">
-                <div class="flex p-3 md:mx-3">
-                    <img src="/img/linkedin-logo.png" alt="LinkedIn Logo" class="w-6 me-3">
-                    <p>LinkedIn</p>
-                </div>
-            </a>
-            <a href="mailto:farrel.apeiron@gmail.com?subject=Hello%20Farrel!&body=Let\'s%20do%20collaboration!"
-                target="_blank">
-                <div class="flex p-3 md:mx-3">
-                    <img src="/img/email-logo.png" alt="LinkedIn Logo" class="w-6 me-3">
-                    <p>Email</p>
-                </div>
-            </a>
-            <a href="https://github.com/FarrelAD" target="_blank">
-                <div class="flex p-3 md:mx-3">
-                    <img src="/img/github-logo.png" alt="LinkedIn Logo" class="w-6 me-3">
-                    <p>GitHub</p>
-                </div>
-            </a>
+    <main class="h-screen max-h-screen relative">
+        <div class="absolute top-0 border-b-2 w-full border-b-gray-600 text-gray-400 text-center py-2 text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
 
-        <div class="mt-8 mx-auto w-full max-w-xs">
-            <svg width="337" height="349" viewBox="0 0 337 349" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M66.1431 102.286L155.113 325.431L137.259 85.8679L66.1431 102.286Z" stroke="white"
-                    stroke-width="4" />
-                <path d="M110.818 214.45L229.346 186.412L124.708 248.749L110.818 214.45Z" stroke="white"
-                    stroke-width="4" />
-                <path d="M86.2018 77.5099L323.642 114.003L86.2018 150.496V77.5099Z" stroke="white" stroke-width="4" />
-            </svg>
+        <div class="relative h-full flex flex-col justify-center items-center p-24">
+            <h1
+                v-if="showFirstTxt" 
+                class="text-6xl font-bold motion-translate-y-in-100 motion-opacity-in-0 motion-blur-in-md motion-duration-1000">
+                Hello <br> 
+                World!
+            </h1>
+
+            <div>
+                <h2 
+                    v-if="!showFirstTxt" 
+                    class="text-5xl font-bold motion-translate-y-in-100 motion-opacity-in-0 motion-blur-in-md motion-duration-1000">
+                    I'm <br>
+                    Farrel
+                </h2>
+
+                <p :class="{'invisible' : !showSubTxt}" class="mt-12 motion-translate-y-in-100 motion-opacity-in-0 motion-blur-in-sm motion-duration-500 motion-delay-[3000ms]">
+                    A passionate Computer Science student with a keen interest in software development and AI innovation.
+                </p>
+            </div>
+
+            <div v-if="showSubTxt" class="absolute bottom-40 z-10 border-2 border-black p-4 bg-white w-3/4 rounded-md shadow-md motion-blur-in-md motion-translate-y-in-25 motion-opacity-in-0 motion-delay-2000 motion-duration-1500">
+                <h3 class="font-bold">My contact:</h3>
+                <div class="flex gap-2">
+                    <a href="mailto:farrel.apeiron@gmail.com">
+                        <img src="/img/email-logo.png" alt="Email logo" class="w-10">
+                    </a>
+                    <a href="https://github.com/FarrelAD" target="_blank">
+                        <img src="/img/github-logo.png" alt="GitHub logo" class="w-10">
+                    </a>
+                    <a href="https://www.linkedin.com/in/farrelad" target="_blank">
+                        <img src="/img/linkedin-logo.png" alt="LinkedIn logo" class="w-10">
+                    </a>
+                    <a href="https://www.instagram.com/farrel_rr" target="_blank">
+                        <img src="/img/instagram-logo.png" alt="Instagram logo" class="w-10">
+                    </a>
+                    <a href="https://www.kaggle.com/farrelad" target="_blank">
+                        <img src="/img/kaggle-logo.png" alt="Kaggle logo" class="w-10">
+                    </a>
+                    <a href="https://huggingface.co/FarrelAD" target="_blank">
+                        <img src="/img/huggingface-logo.png" alt="Huggingface logo" class="w-10">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 w-full border-t-2 border-t-gray-600 text-gray-400 text-center py-2 text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
     </main>
 </template>
-
-<script lang="ts">
-    export default {
-        name: 'HomePage'
-    };
-</script>
-
-<style scoped></style>
