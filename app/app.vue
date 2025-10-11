@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section>Section 1</section>
+    <hero-section />
     <section>Section 2</section>
     <section>Section 3</section>
     <section>Section 4</section>
