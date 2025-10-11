@@ -2,7 +2,7 @@
   <div>
     <hero-section />
     <projects-section />
-    <section>Section 3</section>
+    <competition-section />
     <section>Section 4</section>
     <footer-app/>
   </div>
