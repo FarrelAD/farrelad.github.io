@@ -26,6 +26,11 @@ const socialMediaLinks = [
         logo: 'huggingface'
     },
     {
+        name: 'Kaggle',
+        url: 'https://www.kaggle.com/farrelad',
+        logo: 'kaggle'
+    },
+    {
         name: 'Instagram',
         url: 'https://instagram.com/farrel-rr',
         logo: 'instagram'
