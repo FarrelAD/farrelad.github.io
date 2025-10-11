@@ -26,7 +26,7 @@ defineProps({
         <div class="bg-gray-500 rounded-xl aspect-video w-full mb-4 overflow-hidden">
             <img 
                 v-if="image" 
-                :src="image" 
+                :src="`/etc/${image}`" 
                 :alt="title"
                 class="w-full h-full object-cover"
                 loading="lazy"
