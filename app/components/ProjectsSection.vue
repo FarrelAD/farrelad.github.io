@@ -40,7 +40,7 @@ const projects = [
 </script>
 
 <template>
-    <section class="min-h-screen px-6 py-8 flex flex-col gap-12 bg-sky-100">
+    <section class="min-h-screen px-6 pt-8 pb-24 flex flex-col gap-12 bg-sky-100">
         <h2 class="font-bold text-center text-2xl">FarrelAD's Projects</h2>
 
         <div class="grid grid-cols-2 grid-rows-3 gap-4">

@@ -4,5 +4,6 @@ export default interface ICardCompetition {
   rank: number;
   totalParticipants: number;
   tags: string[];
+  dateStarted: Date;
   isOdd?: boolean;
 }

@@ -36,7 +36,7 @@ const moreButtonHandler = () => {
 </script>
 
 <template>
-    <section class="min-h-screen px-6 py-8 flex flex-col gap-20 bg-sky-100">
+    <section class="min-h-screen px-6 pt-8 pb-24 flex flex-col gap-20 bg-sky-100">
         <div class="flex flex-col gap-8">
             <h2 class="font-bold text-center text-2xl">Activities</h2>
     

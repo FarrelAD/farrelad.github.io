@@ -21,7 +21,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="bg-white rounded-2xl p-2 pb-4 max-w-sm">
+    <div class="bg-white rounded-2xl p-2 pb-4 max-w-sm hover:cursor-pointer hover:bg-gray-100 active:bg-gray-100 transition-colors duration-150">
         <!-- Image placeholder or actual image -->
         <div class="bg-gray-500 rounded-xl aspect-video w-full mb-4 overflow-hidden">
             <img 

@@ -53,14 +53,15 @@ const handleClick = (event) => {
     <button 
         :class="[
             'w-full rounded-full font-bold transition-all duration-200 ease-in-out',
-            'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+            'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black',
+            'hover:cursor-pointer',
             props.bgColor,
             props.textColor,
             props.hoverBgColor,
             sizeClasses,
             {
                 'opacity-50 cursor-not-allowed': props.disabled,
-                'transform hover:scale-105 active:scale-95': !props.disabled
+                'transform hover:scale-[1.02] active:scale-95': !props.disabled
             }
         ]"
         :disabled="props.disabled"
