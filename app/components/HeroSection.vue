@@ -1,6 +1,7 @@
 <script setup>
 const contactHandler = () => {
-    console.log('Contact me clicked!');
+    const contactsEl = document.getElementById('contacts');
+    contactsEl.scrollIntoView({ behavior: 'smooth' });
 };
 
 const skills = [

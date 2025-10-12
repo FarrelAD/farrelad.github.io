@@ -44,9 +44,9 @@ const socialMediaLinks = [
 </script>
 
 <template>
-    <footer class="bg-black text-white flex flex-col gap-12 px-10 py-28">
+    <footer class="w-full bg-black text-white flex flex-col gap-12 px-10 py-28">
         <div>
-            <h4 class="font-bold">Contacts</h4>
+            <h4 id="contacts" class="font-bold">Contacts</h4>
             <a 
                 href="mailto:fad.farrel@gmail.com"
                 class="flex gap-3 cursor-pointer hover:text-gray-300 transition-colors duration-200 w-fit"
