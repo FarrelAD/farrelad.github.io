@@ -10,13 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
-      - uses: actions/setup-node@v4
+      
+        # Install pnpm
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: "20"
-      # Pick your own package manager and build script
-      - run: npm install
+          version: 10.18.2
+
+      # Install dependencies
+      - run: pnpm install
+
+      # Build Nuxt for GitHub Pages
       - run: npx nuxt build --preset github_pages
+
+      # Upload build output
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
