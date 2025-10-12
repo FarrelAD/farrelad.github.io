@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type ICardCompetition from '~/models/ICardCompetition';
 
-const competitoinsResult: ICardCompetition[] = [
+const competitionsResult: ICardCompetition[] = [
     {
         title: 'Data Mining',
         organizer: 'Hology - Universitas Brawijaya',
@@ -32,7 +32,7 @@ const teamUpWithMeHandler = () => {
             <h2 class="font-bold text-center text-2xl">Competitions</h2>
 
             <div class="flex flex-col gap-3">
-                <CardCompetitionResult v-for="(result, index) in competitoinsResult" :key="index" v-bind="result"
+                <CardCompetitionResult v-for="(result, index) in competitionsResult" :key="index" v-bind="result"
                     :is-odd="index % 2 !== 0" />
             </div>
         </div>
