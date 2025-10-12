@@ -1,22 +1,7 @@
-<script setup>
-defineProps({
-    platform: {
-        type: String,
-        default: 'github'
-    },
-    title: {
-        type: String,
-        default: 'Project title'
-    },
-    subtitle: {
-        type: String,
-        default: 'This is subtitle of the project'
-    },
-    image: {
-        type: String,
-        default: ''
-    },
-});
+<script setup lang="ts">
+import type ICardProjects from '~/models/ICardProject';
+
+defineProps<ICardProjects>();
 
 </script>
 

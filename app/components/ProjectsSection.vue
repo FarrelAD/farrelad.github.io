@@ -1,5 +1,7 @@
-<script setup>
-const projects = [
+<script setup lang="ts">
+import type ICardProjects from '~/models/ICardProject';
+
+const projects: ICardProjects[]= [
     {
         title: 'Something is big!',
         subtitle: "Seriously, it's actually big!",
@@ -45,12 +47,9 @@ const projects = [
 
         <div class="grid grid-cols-2 grid-rows-3 gap-4">
             <CardProject 
-                v-for="project in projects" 
-                :key="project.title"
-                :title="project.title"
-                :subtitle="project.subtitle"
-                :platform="project.platform"
-                :image="project.image"
+                v-for="(project, index) in projects" 
+                :key="index"
+                v-bind="project"
             />
         </div>
 
