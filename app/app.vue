@@ -3,7 +3,7 @@
     <hero-section />
     <projects-section />
     <competition-section />
-    <section>Section 4</section>
+    <activities-section />
     <footer-app/>
   </div>
 </template>
