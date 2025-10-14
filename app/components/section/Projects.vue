@@ -39,6 +39,10 @@ const projects: ICardProjects[]= [
         image: 'project-1.jpg',
     }
 ];
+
+const seeMoreProjects = () => {
+    console.log('See more projects clicked!');
+};
 </script>
 
 <template>
