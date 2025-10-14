@@ -1,8 +1,1 @@
 @import "tailwindcss";
-
-@media (min-width: 768px) {
-  body {
-    max-width: 375px;
-    margin: 0 auto;
-  }
-}

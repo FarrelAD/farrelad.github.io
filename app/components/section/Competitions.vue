@@ -27,18 +27,18 @@ const teamUpWithMeHandler = () => {
 </script>
 
 <template>
-    <section class="min-h-screen px-6 pt-8 pb-24 flex flex-col justify-between">
-        <div class="flex flex-col gap-12">
+    <section class="min-h-screen px-6 pt-8 pb-24 md:px-36 md:py-24 flex flex-col justify-between">
+        <div class="flex flex-col items-center gap-12">
             <h2 class="font-bold text-center text-2xl">Competitions</h2>
 
-            <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-3 md:gap-10 md:w-2/3">
                 <CardCompetitionResult v-for="(result, index) in competitionsResult" :key="index" v-bind="result"
                     :is-odd="index % 2 !== 0" />
             </div>
         </div>
 
         <div class="flex justify-center items-center">
-            <div class="w-3/4">
+            <div class="w-3/4 md:w-1/2">
                 <ButtonRounded text="Team up with me!" @click="teamUpWithMeHandler" />
             </div>
         </div>

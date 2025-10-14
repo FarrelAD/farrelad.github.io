@@ -36,7 +36,7 @@ const moreButtonHandler = () => {
 </script>
 
 <template>
-    <section class="min-h-screen px-6 pt-8 pb-24 flex flex-col gap-20 bg-sky-100">
+    <section class="min-h-screen px-6 pt-8 pb-24 md:px-36 md:py-24 flex flex-col gap-20 bg-sky-100">
         <div class="flex flex-col gap-8">
             <h2 class="font-bold text-center text-2xl">Activities</h2>
     
@@ -46,7 +46,7 @@ const moreButtonHandler = () => {
         </div>
 
         <div class="flex justify-center items-center">
-            <div class="w-3/4">
+            <div class="w-3/4 md:w-1/2">
                 <ButtonRounded text="More" @click="moreButtonHandler" />
             </div>
         </div>

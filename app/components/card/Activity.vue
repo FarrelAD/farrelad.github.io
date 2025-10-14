@@ -22,7 +22,7 @@ const handleCardClick = () => {
 
 <template>
     <div 
-        class="bg-white rounded-2xl p-4 w-[90vw] min-w-[90vw] cursor-pointer hover:bg-gray-100 active:bg-gray-100 transition-colors duration-200"
+        class="bg-white rounded-2xl p-4 w-[90vw] min-w-[90vw] md:w-[25vw] md:min-w-[25vw] cursor-pointer hover:bg-gray-100 active:bg-gray-100 transition-colors duration-200"
         @click="handleCardClick"
     >
         <!-- Image container -->

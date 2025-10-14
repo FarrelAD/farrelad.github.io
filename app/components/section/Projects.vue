@@ -39,13 +39,17 @@ const projects: ICardProjects[]= [
         image: 'project-1.jpg',
     }
 ];
+
+const seeMoreProjects = () => {
+    console.log('See more projects clicked!');
+};
 </script>
 
 <template>
-    <section class="min-h-screen px-6 pt-8 pb-24 flex flex-col gap-12 bg-sky-100">
+    <section class="min-h-screen px-6 pt-8 pb-24 md:px-36 md:py-24 flex flex-col gap-12 bg-sky-100">
         <h2 class="font-bold text-center text-2xl">FarrelAD's Projects</h2>
 
-        <div class="grid grid-cols-2 grid-rows-3 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 grid-rows-3 gap-4 md:gap-y-10 place-items-center">
             <CardProject 
                 v-for="(project, index) in projects" 
                 :key="index"
@@ -54,7 +58,7 @@ const projects: ICardProjects[]= [
         </div>
 
         <div class="flex justify-center items-center">
-            <div class="w-3/4">
+            <div class="w-3/4 md:w-1/2">
                 <ButtonRounded text="See more projects!" @click="seeMoreProjects" />
             </div>
         </div>
