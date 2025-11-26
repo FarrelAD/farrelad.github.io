@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang saya",
+    "contact": "Kontak",
+    "projects": "Semua proyek"
+  },
+  "about": {
+    "title": "Sekilas tentang saya",
+    "intro": "Saya adalah seorang full-stack software developer yang berpengalaman dalam membangun aplikasi web dan mobile. Saya terbiasa mengerjakan aplikasi dari sisi tampilan hingga arsitektur sistem di belakangnya. Selain itu, saya juga memiliki ketertarikan dalam bidang machine learning dan terus memperdalam bagaimana teknologi ini bisa diintegrasikan ke dalam sistem secara efektif.",
+    "competitions": "Di luar pengembangan aplikasi, saya juga aktif mengikuti kompetisi. Pada semester ini, saya dan tim berhasil meraih juara 2 dalam kompetisi KMIPN pada cabang Cipta Inovasi di Bidang TIK dengan kategori Inovasi Kerja Sama Tim dengan karya aplikasi terapi untuk anak autis berbasis mobile. Sejak itu saya terus mengikuti berbagai kompetisi lain yang sebagian besar berhubungan dengan data dan AI, total sudah empat kompetisi sejauh ini. Meskipun tidak selalu menang, saya sangat menikmati prosesnya karena setiap kompetisi adalah kesempatan untuk belajar, bereksperimen, dan mengembangkan diri.",
+    "closing": "Saya terus belajar dan mengeksplorasi hal baru. Jika ingin berdiskusi atau berkolaborasi, silakan hubungi saya.",
+    "organizationalExperience": "Pengalaman Organisasi",
+    "devStack": "Tech Stack",
+    "socialMedia": "Media Sosial",
+    "orgs": {
+      "wri": {
+        "title": "Sarana dan Prasarana",
+        "company": "Workshop Riset Informatika (WRI)",
+        "period": "Januari 2025 - sekarang"
+      }
+    },
+    "cta": {
+      "email": "Mari berkolaborasi"
+    }
+  },
+  "projects": {
+    "title": "Proyek",
+    "viewAll": "Lihat semua proyek"
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi"
+  }
+}
