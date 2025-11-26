@@ -1,14 +1,9 @@
 <template>
-  <div>
-    <alert-responsitivity />
+  <div class="bg-white min-h-screen">
+    <app-header />
 
-    <section-hero />
-    <section-projects />
-    <section-competitions />
-    <section-activities />
-
-    <section class="min-h-screen flex items-end">
-      <section-footer />
-    </section>
+    <main>
+      <section-about />
+    </main>
   </div>
 </template>

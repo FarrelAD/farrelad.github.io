@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts',
+    '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots'
   ],
@@ -139,5 +140,17 @@ export default defineNuxtConfig({
   image: {
     format: ['webp', 'jpg'],
     quality: 80
-  }
+  },
+
+
+  // Internationalization
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'id', name: 'Indonesia', file: 'id.json' }
+    ],
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
+  },
 })
