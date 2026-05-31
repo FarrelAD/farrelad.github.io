@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About me",
+    "contact": "Contact",
+    "projects": "All projects"
+  },
+  "about": {
+    "title": "A little bit about me",
+    "intro": "I'm a full-stack software developer with experience building web and mobile applications. I love turning ideas into real products and integrating strong technical architecture behind them. I'm also passionate about machine learning and have been exploring how it can be applied in real systems—from development to deployment. I enjoy building things that are useful, elegant, and scalable.",
+    "competitions": "Outside of software development, I actively participate in technology competitions. Earlier this semester, my team and I won 2nd place in KMIPN in the ICT Innovation Creation branch, under the Team Collaboration Innovation category, with a mobile-based autism therapy application. Since then, I've joined several other competitions—mostly in the fields of data and AI—bringing the total to four so far. Even though I didn't always win, I truly enjoy the experience. Each competition gives me the chance to learn, experiment, and grow my skills.",
+    "closing": "I'm always learning and exploring new ideas. If you want to connect or collaborate, feel free to reach out.",
+    "organizationalExperience": "Organizational Experience",
+    "devStack": "Dev Stack",
+    "socialMedia": "Social Media",
+    "orgs": {
+      "wri": {
+        "title": "Facilities Coordinator",
+        "company": "Workshop Riset Informatika (WRI)",
+        "period": "January 2025 - present"
+      }
+    },
+    "cta": {
+      "email": "Let's work together"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "viewAll": "View all projects"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}
