@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import AppHeader from '../../components/AppHeader.astro';
+
+// Fetch all posts in the blog collection and filter by language
+const posts = await getCollection('blog', ({ data }) => {
+  return data.lang === 'en';
+});
+
+// Sort posts by publication date descending
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+---
+
+<Layout locale="en">
+  <AppHeader locale="en" />
+  
+  <main class="pt-36 pb-20 px-6 md:px-12 bg-white text-black min-h-screen">
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4 mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter leading-none text-black">
+          TECHNICAL BLOG
+        </h1>
+        <p class="font-mono text-xs md:text-sm text-neutral-500 uppercase tracking-widest">
+          Writing about Backend Architecture, Data Systems, and AI Integration.
+        </p>
+      </div>
+
+      <!-- Blog List Grid -->
+      <div class="space-y-10 border-t border-neutral-200 pt-10">
+        {sortedPosts.length === 0 ? (
+          <p class="text-neutral-500 font-mono text-sm">No blog posts available yet.</p>
+        ) : (
+          sortedPosts.map(post => (
+            <article class="group space-y-3">
+              <div class="flex items-center gap-4 text-xs font-mono text-neutral-400">
+                <span>{formatDate(post.data.pubDate)}</span>
+                <span>•</span>
+                <div class="flex gap-2">
+                  {post.data.tags.map(tag => (
+                    <span class="text-[10px] bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200/50 text-neutral-600">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <a href={`/blog/${post.id}`} class="block">
+                <h2 class="text-2xl font-bold tracking-tight text-black group-hover:underline transition-all">
+                  {post.data.title}
+                </h2>
+              </a>
+              
+              <p class="text-neutral-600 text-sm md:text-base leading-relaxed max-w-2xl">
+                {post.data.description}
+              </p>
+              
+              <div class="pt-2">
+                <a 
+                  href={`/blog/${post.id}`} 
+                  class="font-mono text-xs font-bold text-neutral-700 hover:text-black inline-flex items-center gap-1 group-hover:underline"
+                >
+                  READ POST 
+                  <svg class="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))
+        )}
+      </div>
+    </div>
+  </main>
+</Layout>

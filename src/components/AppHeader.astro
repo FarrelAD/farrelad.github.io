@@ -9,6 +9,13 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
+const prefix = locale === 'en' ? '' : '/id';
+const homeUrl = prefix || '/';
+const skillsUrl = `${prefix}/#skills`;
+const projectsUrl = `${prefix}/#projects`;
+const contactUrl = `${prefix}/#contact`;
+const blogUrl = `${prefix}/blog`;
+
 const profiles = [
   {
     name: 'GitHub',
@@ -33,29 +40,34 @@ const profiles = [
     <div class="flex items-center justify-between">
       
       <!-- Branding Logo -->
-      <a href="#home" class="font-mono font-bold text-sm tracking-widest text-black hover:opacity-75 transition-opacity">
+      <a href={homeUrl} class="font-mono font-bold text-sm tracking-widest text-black hover:opacity-75 transition-opacity">
         FARREL AD
       </a>
 
       <!-- Desktop Navigation -->
       <ul class="hidden md:flex items-center gap-10">
         <li>
-          <a href="#home" class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
+          <a href={homeUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
             {t('nav.home').toUpperCase()}
           </a>
         </li>
         <li>
-          <a href="#skills" class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
+          <a href={skillsUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
             {t('nav.about').toUpperCase()}
           </a>
         </li>
         <li>
-          <a href="#projects" class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
+          <a href={projectsUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
             {t('nav.projects').toUpperCase()}
           </a>
         </li>
         <li>
-          <a href="#contact" class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
+          <a href={blogUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
+            {t('nav.blog').toUpperCase()}
+          </a>
+        </li>
+        <li>
+          <a href={contactUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
             {t('nav.contact').toUpperCase()}
           </a>
         </li>
@@ -153,7 +165,7 @@ const profiles = [
       <ul class="space-y-3.5">
         <li>
           <a 
-            href="#home" 
+            href={homeUrl} 
             class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
           >
             {t('nav.home').toUpperCase()}
@@ -161,7 +173,7 @@ const profiles = [
         </li>
         <li>
           <a 
-            href="#skills" 
+            href={skillsUrl} 
             class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
           >
             {t('nav.about').toUpperCase()}
@@ -169,7 +181,7 @@ const profiles = [
         </li>
         <li>
           <a 
-            href="#projects" 
+            href={projectsUrl} 
             class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
           >
             {t('nav.projects').toUpperCase()}
@@ -177,7 +189,15 @@ const profiles = [
         </li>
         <li>
           <a 
-            href="#contact" 
+            href={blogUrl} 
+            class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
+          >
+            {t('nav.blog').toUpperCase()}
+          </a>
+        </li>
+        <li>
+          <a 
+            href={contactUrl} 
             class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
           >
             {t('nav.contact').toUpperCase()}

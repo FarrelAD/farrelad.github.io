@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import AppHeader from '../../../components/AppHeader.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.lang === 'id');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('id-ID', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+---
+
+<Layout locale="id">
+  <AppHeader locale="id" />
+  
+  <main class="pt-36 pb-24 px-6 md:px-12 bg-white text-black min-h-screen">
+    <article class="max-w-3xl mx-auto">
+      <!-- Back Link -->
+      <a 
+        href="/id/blog" 
+        class="font-mono text-xs text-neutral-400 hover:text-black inline-flex items-center gap-1 mb-8"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+        </svg>
+        KEMBALI KE BLOG
+      </a>
+
+      <!-- Header Metadata -->
+      <header class="space-y-4 mb-10 pb-6 border-b border-neutral-200">
+        <div class="flex items-center gap-3 text-xs font-mono text-neutral-400">
+          <span>{formatDate(post.data.pubDate)}</span>
+          <span>•</span>
+          <div class="flex gap-2">
+            {post.data.tags.map(tag => (
+              <span class="text-[10px] bg-neutral-50 px-2 py-0.5 rounded border border-neutral-200 text-neutral-500">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-black">
+          {post.data.title}
+        </h1>
+        
+        <p class="text-lg text-neutral-500 font-light leading-relaxed">
+          {post.data.description}
+        </p>
+      </header>
+
+      <!-- Markdown Content Body -->
+      <div class="prose">
+        <Content />
+      </div>
+
+    </article>
+  </main>
+</Layout>
