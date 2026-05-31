@@ -1,32 +1,108 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About me",
+    "about": "Skills",
     "contact": "Contact",
-    "projects": "All projects"
+    "projects": "Projects"
   },
-  "about": {
-    "title": "A little bit about me",
-    "intro": "I'm a full-stack software developer with experience building web and mobile applications. I love turning ideas into real products and integrating strong technical architecture behind them. I'm also passionate about machine learning and have been exploring how it can be applied in real systems—from development to deployment. I enjoy building things that are useful, elegant, and scalable.",
-    "competitions": "Outside of software development, I actively participate in technology competitions. Earlier this semester, my team and I won 2nd place in KMIPN in the ICT Innovation Creation branch, under the Team Collaboration Innovation category, with a mobile-based autism therapy application. Since then, I've joined several other competitions—mostly in the fields of data and AI—bringing the total to four so far. Even though I didn't always win, I truly enjoy the experience. Each competition gives me the chance to learn, experiment, and grow my skills.",
-    "closing": "I'm always learning and exploring new ideas. If you want to connect or collaborate, feel free to reach out.",
-    "organizationalExperience": "Organizational Experience",
-    "devStack": "Dev Stack",
-    "socialMedia": "Social Media",
-    "orgs": {
-      "wri": {
-        "title": "Facilities Coordinator",
-        "company": "Workshop Riset Informatika (WRI)",
-        "period": "January 2025 - present"
-      }
+  "hero": {
+    "title": "FARREL AD",
+    "subtitle": "BACKEND SYSTEMS & DATA ENGINEERING / AI",
+    "tagline": "I design high-performance REST APIs, build robust data processing pipelines, and deploy machine learning models to production."
+  },
+  "pillars": {
+    "backend": {
+      "title": "Backend Engineering",
+      "desc": "Designing resilient microservice architectures, optimizing relational database schemas, and building high-performance REST/GraphQL APIs."
     },
-    "cta": {
-      "email": "Let's work together"
+    "data": {
+      "title": "Data Engineering",
+      "desc": "Structuring high-throughput ETL workflows, managing data lakes, and parsing large-scale datasets with high reliability."
+    },
+    "ai": {
+      "title": "Artificial Intelligence",
+      "desc": "Deploying machine learning models in production, tuning local inference engines, and designing semantic vector pipelines."
     }
   },
   "projects": {
-    "title": "Projects",
-    "viewAll": "View all projects"
+    "title": "Featured Projects",
+    "list": [
+      {
+        "title": "LuminaDB API Gateway",
+        "desc": "A high-performance reverse proxy and API gateway optimized for real-time WebSockets and gRPC stream handling.",
+        "category": "BACKEND INFRASTRUCTURE",
+        "tags": ["Go", "gRPC", "Redis", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Chronos Data Ingestion Pipeline",
+        "desc": "High-throughput distributed ETL pipeline for ingesting IoT telemetry data using Kafka and TimescaleDB.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Python", "Apache Kafka", "PostgreSQL", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Aura Therapy API",
+        "desc": "The award-winning RESTful API and websocket backend for mobile-based child autism therapy.",
+        "category": "BACKEND INFRASTRUCTURE",
+        "tags": ["Node.js", "Express", "MongoDB", "Socket.io"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Nidus Inference Engine",
+        "desc": "A containerized PyTorch inference endpoint with dynamic batching, Redis caching, and automated request queuing.",
+        "category": "MACHINE LEARNING",
+        "tags": ["PyTorch", "FastAPI", "Redis", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Vortex ETL Processor",
+        "desc": "Parallel processing engine designed for transform operations on large-scale parquet datasets.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Python", "Pandas", "PyArrow", "Multithreading"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Apex Feature Store",
+        "desc": "A centralized, low-latency key-value store for machine learning features, providing real-time data inputs.",
+        "category": "DATA & ML SYSTEM",
+        "tags": ["Python", "PostgreSQL", "Redis", "FastAPI"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Sentry Log Pipeline",
+        "desc": "Real-time log aggregation and analytics pipeline built to collect, parse, and store distributed system events.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Go", "Elasticsearch", "Logstash", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "NeuralForge API",
+        "desc": "RESTful service providing automatic text summarization and semantic embeddings using local Transformer models.",
+        "category": "MACHINE LEARNING",
+        "tags": ["Python", "Transformers", "FastAPI", "Uvicorn"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Kratos Task Orchestrator",
+        "desc": "Lightweight DAG-based job scheduler for automating data pipeline executions with automated retry logic.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Python", "SQLite", "Cron", "FastAPI"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "VectorStream Indexer",
+        "desc": "Database indexing pipeline designed to vectorize document databases and sync them into Milvus.",
+        "category": "DATA & ML SYSTEM",
+        "tags": ["Python", "Milvus", "MongoDB", "SentenceTransformers"],
+        "url": "https://github.com/FarrelAD"
+      }
+    ]
+  },
+  "contact": {
+    "cta": "Let's collaborate.",
+    "sub": "Feel free to reach out for project discussions, system design review, or data pipeline collaborations.",
+    "email": "fad.farrel@gmail.com"
   },
   "footer": {
     "rights": "All rights reserved"

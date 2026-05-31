@@ -1,32 +1,108 @@
 {
   "nav": {
     "home": "Beranda",
-    "about": "Tentang saya",
+    "about": "Keahlian",
     "contact": "Kontak",
-    "projects": "Semua proyek"
+    "projects": "Proyek"
   },
-  "about": {
-    "title": "Sekilas tentang saya",
-    "intro": "Saya adalah seorang full-stack software developer yang berpengalaman dalam membangun aplikasi web dan mobile. Saya terbiasa mengerjakan aplikasi dari sisi tampilan hingga arsitektur sistem di belakangnya. Selain itu, saya juga memiliki ketertarikan dalam bidang machine learning dan terus memperdalam bagaimana teknologi ini bisa diintegrasikan ke dalam sistem secara efektif.",
-    "competitions": "Di luar pengembangan aplikasi, saya juga aktif mengikuti kompetisi. Pada semester ini, saya dan tim berhasil meraih juara 2 dalam kompetisi KMIPN pada cabang Cipta Inovasi di Bidang TIK dengan kategori Inovasi Kerja Sama Tim dengan karya aplikasi terapi untuk anak autis berbasis mobile. Sejak itu saya terus mengikuti berbagai kompetisi lain yang sebagian besar berhubungan dengan data dan AI, total sudah empat kompetisi sejauh ini. Meskipun tidak selalu menang, saya sangat menikmati prosesnya karena setiap kompetisi adalah kesempatan untuk belajar, bereksperimen, dan mengembangkan diri.",
-    "closing": "Saya terus belajar dan mengeksplorasi hal baru. Jika ingin berdiskusi atau berkolaborasi, silakan hubungi saya.",
-    "organizationalExperience": "Pengalaman Organisasi",
-    "devStack": "Tech Stack",
-    "socialMedia": "Media Sosial",
-    "orgs": {
-      "wri": {
-        "title": "Sarana dan Prasarana",
-        "company": "Workshop Riset Informatika (WRI)",
-        "period": "Januari 2025 - sekarang"
-      }
+  "hero": {
+    "title": "FARREL AD",
+    "subtitle": "BACKEND SYSTEMS & DATA ENGINEERING / AI",
+    "tagline": "Saya merancang REST API berkinerja tinggi, membangun pipeline pemrosesan data yang andal, dan men-deploy model machine learning ke produksi."
+  },
+  "pillars": {
+    "backend": {
+      "title": "Backend Engineering",
+      "desc": "Merancang arsitektur microservices yang tangguh, mengoptimalkan skema database relasional, dan membangun API REST/gRPC berkinerja tinggi."
     },
-    "cta": {
-      "email": "Mari berkolaborasi"
+    "data": {
+      "title": "Data Engineering",
+      "desc": "Menyusun workflow ETL berkecepatan tinggi, mengelola data lakes, dan memproses dataset skala besar secara efisien."
+    },
+    "ai": {
+      "title": "Artificial Intelligence",
+      "desc": "Men-deploy model machine learning di lingkungan produksi, mengoptimalkan engine inferensi lokal, dan menyusun pipeline vektor semantik."
     }
   },
   "projects": {
-    "title": "Proyek",
-    "viewAll": "Lihat semua proyek"
+    "title": "Proyek Pilihan",
+    "list": [
+      {
+        "title": "LuminaDB API Gateway",
+        "desc": "Reverse proxy dan API gateway berkinerja tinggi yang dioptimalkan untuk penanganan WebSocket real-time dan stream gRPC.",
+        "category": "BACKEND INFRASTRUCTURE",
+        "tags": ["Go", "gRPC", "Redis", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Chronos Data Ingestion Pipeline",
+        "desc": "Pipeline ETL terdistribusi throughput tinggi untuk menyerap data telemetri IoT menggunakan Kafka dan TimescaleDB.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Python", "Apache Kafka", "PostgreSQL", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Aura Therapy API",
+        "desc": "API RESTful dan backend websocket pemenang penghargaan untuk terapi anak autis berbasis aplikasi mobile.",
+        "category": "BACKEND INFRASTRUCTURE",
+        "tags": ["Node.js", "Express", "MongoDB", "Socket.io"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Nidus Inference Engine",
+        "desc": "Endpoint inferensi PyTorch berbasis kontainer dengan dynamic batching, Redis caching, dan antrean request otomatis.",
+        "category": "MACHINE LEARNING",
+        "tags": ["PyTorch", "FastAPI", "Redis", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Vortex ETL Processor",
+        "desc": "Engine pemrosesan paralel yang dirancang untuk operasi transformasi pada dataset parquet skala besar.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Python", "Pandas", "PyArrow", "Multithreading"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Apex Feature Store",
+        "desc": "Penyimpanan key-value latensi rendah yang tersentralisasi untuk fitur machine learning, menyediakan data real-time.",
+        "category": "DATA & ML SYSTEM",
+        "tags": ["Python", "PostgreSQL", "Redis", "FastAPI"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Sentry Log Pipeline",
+        "desc": "Pipeline agregasi dan analisis log real-time untuk mengumpulkan, mengurai, dan menyimpan log sistem terdistribusi.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Go", "Elasticsearch", "Logstash", "Docker"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "NeuralForge API",
+        "desc": "Layanan API penyedia ringkasan teks otomatis dan embeddings semantik menggunakan model Transformer lokal.",
+        "category": "MACHINE LEARNING",
+        "tags": ["Python", "Transformers", "FastAPI", "Uvicorn"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "Kratos Task Orchestrator",
+        "desc": "Scheduler tugas berbasis DAG yang ringan untuk mengotomatisasi eksekusi data pipeline dengan mekanisme retry otomatis.",
+        "category": "DATA ENGINEERING",
+        "tags": ["Python", "SQLite", "Cron", "FastAPI"],
+        "url": "https://github.com/FarrelAD"
+      },
+      {
+        "title": "VectorStream Indexer",
+        "desc": "Pipeline pengindeksan database yang dirancang untuk memvektorisasi database dokumen dan sinkronisasi ke Milvus.",
+        "category": "DATA & ML SYSTEM",
+        "tags": ["Python", "Milvus", "MongoDB", "SentenceTransformers"],
+        "url": "https://github.com/FarrelAD"
+      }
+    ]
+  },
+  "contact": {
+    "cta": "Mari berkolaborasi.",
+    "sub": "Silakan hubungi saya untuk diskusi proyek, review desain sistem, atau kolaborasi data pipeline.",
+    "email": "fad.farrel@gmail.com"
   },
   "footer": {
     "rights": "Hak cipta dilindungi"
