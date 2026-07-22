@@ -1,0 +1,320 @@
+---
+---
+
+<div
+  id="color-grid"
+  class="color-grid"
+  role="img"
+  aria-label="Interactive color grid — hover, click, or drag to play"
+>
+</div>
+
+<style>
+  .color-grid {
+    width: 100%;
+    height: 50vh;
+    min-height: 240px;
+    max-height: 480px;
+    background: #000;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    cursor: crosshair;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+
+  .color-grid :global(.cell) {
+    aspect-ratio: 1;
+  }
+
+  @media (max-width: 768px) {
+    .color-grid {
+      grid-template-columns: repeat(9, 1fr);
+      height: 40vh;
+      min-height: 180px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .color-grid {
+      grid-template-columns: repeat(6, 1fr);
+      height: 35vh;
+      min-height: 140px;
+    }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var grid = document.getElementById('color-grid');
+  if (!grid) return;
+
+  var cols = 14;
+  var rows = 0;
+  var cells = [];
+
+  // --- Color helper ---
+  function hslStr(h, s, l) {
+    return 'hsl(' + ((h % 360) + 360) % 360 + ',' + s + '%,' + l + '%)';
+  }
+
+  // --- Build grid: each cell stores its position + unique random phase offsets ---
+  function buildGrid() {
+    grid.innerHTML = '';
+    cells = [];
+
+    var w = grid.clientWidth;
+    var h = grid.clientHeight;
+    var cellW = w / cols;
+    rows = Math.ceil(h / cellW);
+
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var el = document.createElement('div');
+        el.className = 'cell';
+        el.dataset.row = r;
+        el.dataset.col = c;
+        grid.appendChild(el);
+
+        // Per-cell random offsets break up regularity
+        var jitterH = (Math.random() - 0.5) * 1.2;
+        var jitterS = (Math.random() - 0.5) * 0.8;
+        var jitterL = (Math.random() - 0.5) * 0.6;
+
+        cells.push({
+          el: el,
+          r: r,
+          c: c,
+          // Random phase offsets per cell (spatial waves travel through these)
+          p1: jitterH,
+          p2: jitterH * 0.7,
+          p3: jitterS,
+          p4: jitterL,
+          // Interaction boost (decays over time)
+          boostH: 0,
+          boostS: 0,
+          boostL: 0,
+          boostDecay: 0,
+        });
+      }
+    }
+  }
+
+  function getCell(r, c) {
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return null;
+    return cells[r * cols + c];
+  }
+
+  // Kick nearby cells — adds a hue/sat/light burst that decays
+  function kickCells(centerR, centerC, radius, hueKick, satKick, lightKick) {
+    for (var dr = -radius; dr <= radius; dr++) {
+      for (var dc = -radius; dc <= radius; dc++) {
+        var dist = Math.sqrt(dr * dr + dc * dc);
+        if (dist > radius) continue;
+        var cell = getCell(centerR + dr, centerC + dc);
+        if (!cell) continue;
+        var falloff = 1 - dist / (radius + 1);
+        cell.boostH += hueKick * falloff;
+        cell.boostS += satKick * falloff;
+        cell.boostL += lightKick * falloff;
+        cell.boostDecay = Math.max(cell.boostDecay, 0.015 + falloff * 0.01);
+      }
+    }
+  }
+
+  // --- Random hue shift: slow flow → sudden jump → slow flow ---
+  var globalHueOffset = 0;
+  var targetHueOffset = 0;
+  var shiftCooldown = 2 + Math.random() * 3; // first shift after 2-5s
+  var lastTime = 0;
+
+  // --- Main animation loop: traveling waves compute color from (r, c, time) ---
+  function tick(now) {
+    var dt = lastTime ? Math.min((now - lastTime) * 0.001, 0.1) : 0.016;
+    lastTime = now;
+    var t = now * 0.001;
+
+    // Periodic random hue jump
+    shiftCooldown -= dt;
+    if (shiftCooldown <= 0) {
+      // Jump to a completely different hue region
+      targetHueOffset += 60 + Math.random() * 140; // 60-200° shift
+      shiftCooldown = 3 + Math.random() * 5; // next jump in 3-8s
+    }
+    // Fast smooth interpolation (~0.2s to reach target)
+    globalHueOffset += (targetHueOffset - globalHueOffset) * Math.min(1, 6 * dt);
+
+    for (var i = 0, len = cells.length; i < len; i++) {
+      var cell = cells[i];
+      var r = cell.r;
+      var c = cell.c;
+
+      // === HUE: 4 traveling waves at different angles & speeds ===
+      // Wave 1: flows rightward (c-direction)
+      var w1 = Math.sin(c * 0.35 + t * 0.22 + cell.p1) * 42;
+      // Wave 2: flows downward (r-direction)
+      var w2 = Math.cos(r * 0.42 + t * 0.17 + cell.p2) * 36;
+      // Wave 3: diagonal ↘
+      var w3 = Math.sin((r + c) * 0.28 + t * 0.13) * 30;
+      // Wave 4: diagonal ↗ (slower)
+      var w4 = Math.cos((r - c) * 0.22 + t * 0.09) * 22;
+
+      var h = 230 + w1 + w2 + w3 + w4 + globalHueOffset + cell.boostH;
+
+      // === SATURATION: subtle traveling wave ===
+      var s = 56
+        + Math.sin(r * 0.35 + t * 0.1 + cell.p3) * 9
+        + Math.cos(c * 0.28 + t * 0.07) * 7
+        + cell.boostS;
+
+      // === LIGHTNESS: slow breathing wave ===
+      var l = 30
+        + Math.sin(c * 0.3 + t * 0.11 + cell.p4) * 5
+        + Math.cos(r * 0.25 + t * 0.08) * 4
+        + cell.boostL;
+
+      // Clamp to midnight range
+      s = Math.max(35, Math.min(75, s));
+      l = Math.max(18, Math.min(42, l));
+
+      cell.el.style.backgroundColor = hslStr(h, s, l);
+
+      // Decay interaction boost
+      if (cell.boostDecay > 0) {
+        cell.boostH *= (1 - cell.boostDecay);
+        cell.boostS *= (1 - cell.boostDecay);
+        cell.boostL *= (1 - cell.boostDecay);
+        if (Math.abs(cell.boostH) < 0.1 && Math.abs(cell.boostS) < 0.1
+            && Math.abs(cell.boostL) < 0.1) {
+          cell.boostH = 0;
+          cell.boostS = 0;
+          cell.boostL = 0;
+          cell.boostDecay = 0;
+        }
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+
+  // --- Interactions ---
+  function cellFromEvent(e) {
+    var el = e.target;
+    if (!el || !el.classList.contains('cell')) return null;
+    return { r: +el.dataset.row, c: +el.dataset.col };
+  }
+
+  // Hover — gentle hue kick to neighbors
+  grid.addEventListener('mouseover', function (e) {
+    var pos = cellFromEvent(e);
+    if (!pos) return;
+    kickCells(pos.r, pos.c, 2, 40, 4, 2);
+  });
+
+  // Click — ripple wave outward
+  var rippleId = 0;
+  grid.addEventListener('click', function (e) {
+    var pos = cellFromEvent(e);
+    if (!pos) return;
+    var id = ++rippleId;
+    var maxRing = Math.max(rows, cols);
+
+    for (var ring = 0; ring <= maxRing; ring++) {
+      (function (rg, myId) {
+        setTimeout(function () {
+          if (myId !== rippleId) return;
+          for (var dr = -rg; dr <= rg; dr++) {
+            for (var dc = -rg; dc <= rg; dc++) {
+              if (Math.abs(dr) === rg || Math.abs(dc) === rg) {
+                var cell = getCell(pos.r + dr, pos.c + dc);
+                if (cell) {
+                  var falloff = 1 - rg / (maxRing + 1);
+                  cell.boostH += 120 * falloff;
+                  cell.boostS += 10 * falloff;
+                  cell.boostL += 6 * falloff;
+                  cell.boostDecay = Math.max(cell.boostDecay, 0.012);
+                }
+              }
+            }
+          }
+        }, rg * 35);
+      })(ring, id);
+    }
+  });
+
+  // Double-click — big burst across whole grid
+  grid.addEventListener('dblclick', function (e) {
+    rippleId++;
+    var pos = cellFromEvent(e);
+    var cr = pos ? pos.r : Math.floor(rows / 2);
+    var cc = pos ? pos.c : Math.floor(cols / 2);
+    var maxDist = Math.sqrt(rows * rows + cols * cols);
+
+    for (var i = 0, len = cells.length; i < len; i++) {
+      var cell = cells[i];
+      var dist = Math.sqrt(Math.pow(cell.r - cr, 2) + Math.pow(cell.c - cc, 2));
+      var falloff = 1 - dist / maxDist;
+      cell.boostH += 140 * falloff;
+      cell.boostS += 12 * falloff;
+      cell.boostL += 8 * falloff;
+      cell.boostDecay = 0.008;
+    }
+  });
+
+  // Touch drag
+  var lastTouchCell = null;
+  grid.addEventListener('touchstart', function (e) {
+    e.preventDefault();
+    var touch = e.touches[0];
+    var el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (el && el.classList.contains('cell')) {
+      lastTouchCell = { r: +el.dataset.row, c: +el.dataset.col };
+      kickCells(lastTouchCell.r, lastTouchCell.c, 3, 50, 5, 3);
+    }
+  }, { passive: false });
+
+  grid.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    var touch = e.touches[0];
+    var el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (el && el.classList.contains('cell')) {
+      var pos = { r: +el.dataset.row, c: +el.dataset.col };
+      var key = pos.r + ',' + pos.c;
+      var lastKey = lastTouchCell ? lastTouchCell.r + ',' + lastTouchCell.c : '';
+      if (key !== lastKey) {
+        kickCells(pos.r, pos.c, 3, 50, 5, 3);
+        lastTouchCell = pos;
+      }
+    }
+  }, { passive: false });
+
+  grid.addEventListener('touchend', function () {
+    lastTouchCell = null;
+  });
+
+  // Resize rebuild
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      var prev = cols;
+      if (window.innerWidth <= 480) cols = 6;
+      else if (window.innerWidth <= 768) cols = 9;
+      else cols = 14;
+      if (prev !== cols) buildGrid();
+    }, 200);
+  });
+
+  // Init
+  if (window.innerWidth <= 480) cols = 6;
+  else if (window.innerWidth <= 768) cols = 9;
+  else cols = 14;
+
+  buildGrid();
+})();
+</script>
