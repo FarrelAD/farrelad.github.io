@@ -8,95 +8,60 @@
   },
   "hero": {
     "title": "FARREL AD",
-    "subtitle": "BACKEND SYSTEMS & DATA ENGINEERING / AI",
-    "tagline": "Saya merancang REST API berkinerja tinggi, membangun pipeline pemrosesan data yang andal, dan men-deploy model machine learning ke produksi."
+    "subtitle": "BACKEND SYSTEMS / IoT / DATA ENGINEERING",
+    "tagline": "Saya membangun sistem backend, platform IoT, dan solusi data engineering -- dengan ketertarikan yang berkembang di bidang machine learning."
   },
   "pillars": {
     "backend": {
       "title": "Backend Engineering",
-      "desc": "Merancang arsitektur microservices yang tangguh, mengoptimalkan skema database relasional, dan membangun API REST/gRPC berkinerja tinggi."
+      "desc": "Merancang arsitektur backend yang tangguh, mengoptimalkan skema database relasional, dan membangun API REST berkinerja tinggi dengan PHP dan Node.js."
     },
     "data": {
       "title": "Data Engineering",
-      "desc": "Menyusun workflow ETL berkecepatan tinggi, mengelola data lakes, dan memproses dataset skala besar secara efisien."
+      "desc": "Menyusun workflow ETL throughput tinggi, mengelola database time-series, dan membangun pipeline ingest telemetri real-time."
     },
     "ai": {
       "title": "Artificial Intelligence",
-      "desc": "Men-deploy model machine learning di lingkungan produksi, mengoptimalkan engine inferensi lokal, dan menyusun pipeline vektor semantik."
+      "desc": "Mengeksplorasi deployment model machine learning, engine inferensi lokal, dan pipeline vektor semantik."
     }
   },
   "projects": {
     "title": "Proyek Pilihan",
     "list": [
       {
-        "title": "LuminaDB API Gateway",
-        "desc": "Reverse proxy dan API gateway berkinerja tinggi yang dioptimalkan untuk penanganan WebSocket real-time dan stream gRPC.",
-        "category": "BACKEND INFRASTRUCTURE",
-        "tags": ["Go", "gRPC", "Redis", "Docker"],
-        "url": "https://github.com/FarrelAD"
+        "title": "Basic RESTful API in PHP",
+        "desc": "API REST dasar yang dibangun dalam PHP native dengan MySQL, mendemonstrasikan routing manual, prepared statement PDO, dan formatting JSON yang bersih.",
+        "category": "BACKEND",
+        "tags": ["PHP", "MySQL", "PDO", "Composer"],
+        "url": "https://github.com/FarrelAD/Basic-PHP-RESTful-API"
       },
       {
-        "title": "Chronos Data Ingestion Pipeline",
-        "desc": "Pipeline ETL terdistribusi throughput tinggi untuk menyerap data telemetri IoT menggunakan Kafka dan TimescaleDB.",
-        "category": "DATA ENGINEERING",
-        "tags": ["Python", "Apache Kafka", "PostgreSQL", "Docker"],
-        "url": "https://github.com/FarrelAD"
+        "title": "Luminous IoT",
+        "desc": "Dashboard monitoring IoT real-time yang menjembatani telemetri sensor MQTT dengan aplikasi web Symfony, dilengkapi gauge live, chart timeline, dan kontrol device dua arah.",
+        "category": "BACKEND & IoT",
+        "tags": ["PHP", "Symfony", "MQTT", "MySQL", "Docker"],
+        "url": "https://github.com/FarrelAD/PHP-IoT-MQTT"
       },
       {
-        "title": "Aura Therapy API",
-        "desc": "API RESTful dan backend websocket pemenang penghargaan untuk terapi anak autis berbasis aplikasi mobile.",
-        "category": "BACKEND INFRASTRUCTURE",
-        "tags": ["Node.js", "Express", "MongoDB", "Socket.io"],
-        "url": "https://github.com/FarrelAD"
+        "title": "PrintX",
+        "desc": "Tool mail merge berbasis browser yang menghasilkan PDF siap cetak dari data spreadsheet dan template desain, dengan editor canvas drag-and-drop dan rendering 300 DPI.",
+        "category": "FULL-STACK TOOL",
+        "tags": ["React", "TypeScript", "Konva", "jsPDF", "Tailwind"],
+        "url": "https://github.com/FarrelAD/PrintX"
       },
       {
-        "title": "Nidus Inference Engine",
-        "desc": "Endpoint inferensi PyTorch berbasis kontainer dengan dynamic batching, Redis caching, dan antrean request otomatis.",
+        "title": "IoT Smart Farming API",
+        "desc": "Platform NestJS yang sepenuhnya terdockerisasi mensimulasikan sistem IoT smart farming dengan ingest telemetri MQTT, penyimpanan time-series TimescaleDB, dan deployment CI/CD otomatis.",
+        "category": "BACKEND & IoT",
+        "tags": ["NestJS", "Docker", "TimescaleDB", "MQTT", "Grafana"],
+        "url": "https://github.com/FarrelAD/IOT-PROTO-SAMPLE"
+      },
+      {
+        "title": "JavaScript Linear Regression",
+        "desc": "Model linear regression dari nol dalam JavaScript murni dengan antarmuka CLI dan web, dilengkapi visualisasi Chart.js dan tanpa dependensi library ML.",
         "category": "MACHINE LEARNING",
-        "tags": ["PyTorch", "FastAPI", "Redis", "Docker"],
-        "url": "https://github.com/FarrelAD"
-      },
-      {
-        "title": "Vortex ETL Processor",
-        "desc": "Engine pemrosesan paralel yang dirancang untuk operasi transformasi pada dataset parquet skala besar.",
-        "category": "DATA ENGINEERING",
-        "tags": ["Python", "Pandas", "PyArrow", "Multithreading"],
-        "url": "https://github.com/FarrelAD"
-      },
-      {
-        "title": "Apex Feature Store",
-        "desc": "Penyimpanan key-value latensi rendah yang tersentralisasi untuk fitur machine learning, menyediakan data real-time.",
-        "category": "DATA & ML SYSTEM",
-        "tags": ["Python", "PostgreSQL", "Redis", "FastAPI"],
-        "url": "https://github.com/FarrelAD"
-      },
-      {
-        "title": "Sentry Log Pipeline",
-        "desc": "Pipeline agregasi dan analisis log real-time untuk mengumpulkan, mengurai, dan menyimpan log sistem terdistribusi.",
-        "category": "DATA ENGINEERING",
-        "tags": ["Go", "Elasticsearch", "Logstash", "Docker"],
-        "url": "https://github.com/FarrelAD"
-      },
-      {
-        "title": "NeuralForge API",
-        "desc": "Layanan API penyedia ringkasan teks otomatis dan embeddings semantik menggunakan model Transformer lokal.",
-        "category": "MACHINE LEARNING",
-        "tags": ["Python", "Transformers", "FastAPI", "Uvicorn"],
-        "url": "https://github.com/FarrelAD"
-      },
-      {
-        "title": "Kratos Task Orchestrator",
-        "desc": "Scheduler tugas berbasis DAG yang ringan untuk mengotomatisasi eksekusi data pipeline dengan mekanisme retry otomatis.",
-        "category": "DATA ENGINEERING",
-        "tags": ["Python", "SQLite", "Cron", "FastAPI"],
-        "url": "https://github.com/FarrelAD"
-      },
-      {
-        "title": "VectorStream Indexer",
-        "desc": "Pipeline pengindeksan database yang dirancang untuk memvektorisasi database dokumen dan sinkronisasi ke Milvus.",
-        "category": "DATA & ML SYSTEM",
-        "tags": ["Python", "Milvus", "MongoDB", "SentenceTransformers"],
-        "url": "https://github.com/FarrelAD"
+        "tags": ["JavaScript", "Chart.js", "Node.js", "Tailwind"],
+        "url": "https://github.com/FarrelAD/JavaScript-Linear-Regression"
       }
     ]
   },
