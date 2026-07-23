@@ -99,3 +99,36 @@
   background-color: #262626;
   border-color: #262626;
 }
+
+/* Table of Contents */
+.toc-link {
+  border-left: 2px solid transparent;
+  padding-left: 8px;
+  margin-left: -10px;
+}
+
+.toc-link.active {
+  color: #000;
+  font-weight: 700;
+  border-left-color: #000;
+}
+
+/* Mobile TOC details/summary */
+.toc-mobile summary {
+  list-style: none;
+}
+
+.toc-mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc-mobile summary::after {
+  content: '+';
+  float: right;
+  font-weight: 400;
+  color: #a3a3a3;
+}
+
+.toc-mobile[open] summary::after {
+  content: '−';
+}
