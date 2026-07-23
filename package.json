@@ -18,11 +18,5 @@
     "astro": "^6.4.2",
     "astro-icon": "^1.1.5",
     "tailwindcss": "^4.3.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
   }
 }
