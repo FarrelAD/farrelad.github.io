@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import { Icon } from 'astro-icon/components';
 import { useTranslations } from '../i18n/utils';
 import en from '../i18n/locales/en.json';
 import id from '../i18n/locales/id.json';
@@ -67,9 +67,7 @@ const socialLinks = [
             <Icon name={link.icon} class="w-4 h-4 text-neutral-500 group-hover:text-black transition-colors" />
             <span class="font-mono text-xs text-neutral-600 group-hover:text-black transition-colors">{link.name}</span>
           </div>
-          <svg class="w-3.5 h-3.5 text-neutral-400 group-hover:text-black transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
+          <Icon name="mdi:arrow-right" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-black transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       ))}
     </div>
@@ -139,9 +137,7 @@ const socialLinks = [
               <span class="font-mono text-[10px] font-bold text-neutral-400 tracking-widest uppercase">
                 {project.category}
               </span>
-              <svg class="w-4 h-4 text-neutral-400 group-hover:text-black transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
+              <Icon name="mdi:open-in-new" class="w-4 h-4 text-neutral-400 group-hover:text-black transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
             
             <h3 class="text-xl font-bold tracking-tight text-black">

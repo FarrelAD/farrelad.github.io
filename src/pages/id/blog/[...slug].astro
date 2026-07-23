@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import AppHeader from '../../../components/AppHeader.astro';
+import { Icon } from 'astro-icon/components';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => data.lang === 'id');
@@ -33,9 +34,7 @@ const formatDate = (date: Date) => {
         href="/id/blog" 
         class="font-mono text-xs text-neutral-400 hover:text-black inline-flex items-center gap-1 mb-8"
       >
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-        </svg>
+        <Icon name="mdi:chevron-left" class="w-3.5 h-3.5" />
         KEMBALI KE BLOG
       </a>
 
