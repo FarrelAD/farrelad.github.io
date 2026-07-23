@@ -1,0 +1,292 @@
+---
+import { Icon } from 'astro-icon/components';
+import ColorGrid from './ColorGrid.astro';
+import { useTranslations } from '../i18n/utils';
+import en from '../i18n/locales/en.json';
+import id from '../i18n/locales/id.json';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+// Retrieve the localized project list directly from JSON imports for type-safety
+const projectsList = locale === 'en' ? en.projects.list : id.projects.list;
+
+const allCategories = [...new Set(projectsList.map(p => p.category))].sort();
+
+const searchPlaceholder = locale === 'en' ? 'Search projects...' : 'Cari proyek...';
+const allLabel = locale === 'en' ? 'All' : 'Semua';
+const noResultsText = locale === 'en' ? 'No projects match your search.' : 'Tidak ada proyek yang cocok.';
+
+const pillars = [
+  {
+    key: 'backend',
+    tech: ['PHP', 'Symfony', 'NestJS', 'Express.js', 'Laravel', 'MySQL', 'PostgreSQL', 'Redis', 'Docker']
+  },
+  {
+    key: 'data',
+    tech: ['Python', 'Apache Kafka', 'TimescaleDB', 'MQTT', 'Pandas', 'ETL Pipelines']
+  },
+  {
+    key: 'ai',
+    tech: ['PyTorch', 'Transformers', 'Scikit-learn', 'Milvus / Vector DBs']
+  }
+];
+
+const socialLinks = [
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/farrelad', icon: 'mdi:linkedin' },
+  { name: 'GitHub', url: 'https://github.com/FarrelAD', icon: 'mdi:github' },
+  { name: 'GitLab', url: 'https://gitlab.com/FarrelAD', icon: 'mdi:gitlab' },
+  { name: 'Medium', url: 'https://medium.com/@farrel-ad', icon: 'mdi:medium' },
+  { name: 'Kaggle', url: 'https://kaggle.com/farrelad', icon: 'simple-icons:kaggle' },
+  { name: 'Hugging Face', url: 'https://huggingface.co/FarrelAD', icon: 'simple-icons:huggingface' }
+];
+---
+
+<!-- Hero Section with Color Grid Background -->
+<section class="relative min-h-[80vh] md:min-h-[85vh] overflow-hidden">
+  <!-- Color Grid: full background -->
+  <div class="absolute inset-0 z-0">
+    <ColorGrid />
+  </div>
+
+  <!-- Gradient overlays for text readability -->
+  <div class="absolute inset-0 z-[1] bg-gradient-to-b from-black/50 via-black/20 to-black/50 pointer-events-none"></div>
+
+  <!-- Hero content (pointer-events: none so grid receives hover/click/touch) -->
+  <div class="relative z-[2] pt-36 pb-20 px-6 md:px-12 min-h-[80vh] md:min-h-[85vh] flex items-center pointer-events-none">
+    <div class="max-w-6xl mx-auto w-full">
+      <div class="max-w-3xl space-y-6">
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none text-white">
+          {t('hero.title')}
+        </h1>
+        <p class="font-mono text-xs md:text-sm font-bold tracking-widest text-white/50 uppercase">
+          {t('hero.subtitle')}
+        </p>
+        <p class="text-xl md:text-2xl text-white/60 leading-relaxed font-light">
+          {t('hero.tagline')}
+        </p>
+      </div>
+
+      <!-- Quick social links as outline tiles -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mt-12 pointer-events-auto">
+        {socialLinks.map(link => (
+          <a 
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between border border-white/15 hover:border-white/50 p-3.5 rounded transition-all duration-200 group bg-white/5 hover:bg-white/10"
+          >
+            <div class="flex items-center gap-2">
+              <Icon name={link.icon} class="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+              <span class="font-mono text-xs text-white/50 group-hover:text-white transition-colors">{link.name}</span>
+            </div>
+            <Icon name="mdi:arrow-right" class="w-3.5 h-3.5 text-white/30 group-hover:text-white transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Pillars Section -->
+<section id="skills" class="py-20 px-6 md:px-12 bg-white text-black transition-colors duration-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase mb-12">
+      {t('nav.about').toUpperCase()} / CAPABILITIES
+    </h2>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      {pillars.map(pillar => {
+        // Dynamic translation retrieval
+        const title = t(`pillars.${pillar.key}.title`);
+        const desc = t(`pillars.${pillar.key}.desc`);
+        return (
+          <div class="border border-neutral-200 p-8 rounded bg-neutral-50/20 space-y-6">
+            <h3 class="text-xl font-bold tracking-tight text-black">
+              {title}
+            </h3>
+            <p class="text-sm text-neutral-600 leading-relaxed min-h-[60px]">
+              {desc}
+            </p>
+            <div class="pt-4 border-t border-neutral-200">
+              <h4 class="font-mono text-xxs font-bold uppercase text-neutral-400 tracking-wider mb-3">
+                CORE STACK
+              </h4>
+              <div class="flex flex-wrap gap-1.5">
+                {pillar.tech.map(tech => (
+                  <span class="font-mono text-[10px] font-bold text-neutral-600 bg-neutral-100/80 px-2 py-1 rounded border border-neutral-200/50">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<hr class="border-neutral-200 max-w-6xl mx-auto" />
+
+<!-- Projects Grid Section -->
+<section id="projects" class="py-20 px-6 md:px-12 bg-white text-black transition-colors duration-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase mb-12">
+      {t('projects.title').toUpperCase()}
+    </h2>
+
+    <!-- Search + Category Filter -->
+    <div class="mb-8 space-y-4">
+      <div class="relative">
+        <Icon name="mdi:magnify" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
+        <input 
+          type="text" 
+          id="project-search"
+          placeholder={searchPlaceholder}
+          class="w-full font-mono text-sm bg-neutral-50 border border-neutral-200 rounded pl-9 pr-4 py-2.5 text-black placeholder:text-neutral-400 focus:outline-none focus:border-black transition-colors"
+        />
+      </div>
+      <div class="flex flex-wrap gap-1.5">
+        <button 
+          class="project-cat-btn active font-mono text-[10px] font-bold px-2.5 py-1 rounded border border-neutral-200 bg-neutral-50 text-neutral-500 hover:border-black hover:text-black transition-colors"
+          data-category="all"
+        >
+          {allLabel}
+        </button>
+        {allCategories.map(cat => (
+          <button 
+            class="project-cat-btn font-mono text-[10px] font-bold px-2.5 py-1 rounded border border-neutral-200 bg-neutral-50 text-neutral-500 hover:border-black hover:text-black transition-colors"
+            data-category={cat.toLowerCase()}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <p id="project-no-results" class="text-neutral-500 font-mono text-sm hidden mb-6">
+      {noResultsText}
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="project-grid">
+      {projectsList.map(project => (
+        <a 
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block border border-neutral-200 hover:border-black p-8 rounded bg-white hover:shadow-sm transition-all duration-200 relative overflow-hidden project-card"
+          data-title={project.title.toLowerCase()}
+          data-desc={project.desc.toLowerCase()}
+          data-category={project.category.toLowerCase()}
+          data-tags={project.tags.join(',').toLowerCase()}
+        >
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] font-bold text-neutral-400 tracking-widest uppercase">
+                {project.category}
+              </span>
+              <Icon name="mdi:open-in-new" class="w-4 h-4 text-neutral-400 group-hover:text-black transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
+            
+            <h3 class="text-xl font-bold tracking-tight text-black">
+              {project.title}
+            </h3>
+            
+            <p class="text-sm text-neutral-600 leading-relaxed">
+              {project.desc}
+            </p>
+            
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              {project.tags.map(tag => (
+                <span class="font-mono text-[10px] font-bold text-neutral-500 bg-neutral-50 border border-neutral-200 px-2 py-0.5 rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<hr class="border-neutral-200 max-w-6xl mx-auto" />
+
+<!-- Contact Section & Footer -->
+<section id="contact" class="py-24 px-6 md:px-12 bg-white text-black transition-colors duration-200">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+      <div class="space-y-6">
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-none text-black">
+          {t('contact.cta')}
+        </h2>
+        <p class="text-neutral-500 text-sm md:text-base max-w-md font-light leading-relaxed">
+          {t('contact.sub')}
+        </p>
+      </div>
+
+      <div class="flex lg:justify-end">
+        <a 
+          href={`mailto:${t('contact.email')}`}
+          class="inline-block font-mono text-xl md:text-2xl font-bold border-b-2 border-black pb-2 hover:opacity-70 transition-opacity"
+        >
+          {t('contact.email')}
+        </a>
+      </div>
+    </div>
+
+    <!-- Small footer copyright -->
+    <div class="flex flex-col sm:flex-row justify-between items-center pt-20 mt-12 border-t border-neutral-200 text-neutral-400 text-xs font-mono gap-4">
+      <p>© {new Date().getFullYear()} Farrel AD. {t('footer.rights')}.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('project-search') as HTMLInputElement;
+    const noResults = document.getElementById('project-no-results') as HTMLParagraphElement;
+    const grid = document.getElementById('project-grid') as HTMLDivElement;
+    const cards = Array.from(document.querySelectorAll('.project-card')) as HTMLElement[];
+    const catBtns = Array.from(document.querySelectorAll('.project-cat-btn')) as HTMLButtonElement[];
+
+    let activeCategory = 'all';
+
+    function filterProjects() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const title = card.dataset.title || '';
+        const desc = card.dataset.desc || '';
+        const tags = card.dataset.tags || '';
+        const category = card.dataset.category || '';
+
+        const matchesSearch = !query || title.includes(query) || desc.includes(query) || tags.includes(query);
+        const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+        card.style.display = matchesSearch && matchesCategory ? '' : 'none';
+      });
+
+      const visible = cards.filter(c => c.style.display !== 'none');
+      noResults.classList.toggle('hidden', visible.length > 0);
+      grid.classList.toggle('hidden', visible.length === 0);
+    }
+
+    searchInput.addEventListener('input', filterProjects);
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.category || 'all';
+        filterProjects();
+      });
+    });
+  });
+</script>

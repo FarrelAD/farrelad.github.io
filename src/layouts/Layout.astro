@@ -1,0 +1,98 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, 'https://farrelad.github.io').toString();
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={locale} class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- SEO Config -->
+		<title>Full Stack Developer & AI Enthusiast | Farrel AD</title>
+		<meta name="description" content="Farrel AD - Full Stack Developer specializing in web development, mobile apps, machine learning, and cloud computing. View my projects and get in touch." />
+		<meta name="keywords" content="Farrel AD, Full Stack Developer, Web Development, Machine Learning, AI, Astro, JavaScript, Python, Portfolio" />
+		<meta name="author" content="Farrel AD" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Farrel AD Portfolio" />
+		<meta property="og:title" content="Farrel AD - Full Stack Developer & AI Enthusiast" />
+		<meta property="og:description" content="Full Stack Developer specializing in web development, mobile apps, machine learning, and cloud computing. View my projects and get in touch." />
+		<meta property="og:image" content="/images/og-image.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:url" content="https://farrelad.github.io" />
+		
+		<!-- Theme and Colors -->
+		<meta name="theme-color" content="#0ea5e9" />
+		<meta name="msapplication-TileColor" content="#0ea5e9" />
+		<meta name="application-name" content="Farrel AD Portfolio" />
+		
+		<!-- Favicons -->
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.jpg" />
+		<link rel="canonical" href={canonicalUrl} />
+		
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Farrel AD",
+				"jobTitle": "Full Stack Developer",
+				"description": "Full Stack Developer specializing in web development, mobile apps, machine learning, and cloud computing.",
+				"url": "https://farrelad.github.io",
+				"email": "mailto:fad.farrel@gmail.com",
+				"sameAs": [
+					"https://linkedin.com/in/farrelad",
+					"https://github.com/FarrelAD",
+					"https://gitlab.com/FarrelAD",
+					"https://medium.com/@farrel-ad",
+					"https://huggingface.co/FarrelAD",
+					"https://www.kaggle.com/farrelad"
+				],
+				"knowsAbout": [
+					"Web Development",
+					"Mobile App Development",
+					"Machine Learning",
+					"Deep Learning",
+					"Cloud Computing",
+					"JavaScript",
+					"Vue.js",
+					"Astro",
+					"Python"
+				]
+			}
+		</script>
+	</head>
+	<body class="bg-white min-h-screen text-gray-900 antialiased font-sans">
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

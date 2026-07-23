@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Keahlian",
+    "contact": "Kontak",
+    "projects": "Proyek",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "FARREL AD",
+    "subtitle": "BACKEND SYSTEMS / IoT / DATA ENGINEERING",
+    "tagline": "Saya membangun sistem backend, platform IoT, dan solusi data engineering -- dengan ketertarikan yang berkembang di bidang machine learning."
+  },
+  "pillars": {
+    "backend": {
+      "title": "Backend Engineering",
+      "desc": "Merancang arsitektur backend yang tangguh, mengoptimalkan skema database relasional, dan membangun API REST berkinerja tinggi dengan PHP dan Node.js."
+    },
+    "data": {
+      "title": "Data Engineering",
+      "desc": "Menyusun workflow ETL throughput tinggi, mengelola database time-series, dan membangun pipeline ingest telemetri real-time."
+    },
+    "ai": {
+      "title": "Artificial Intelligence",
+      "desc": "Mengeksplorasi deployment model machine learning, engine inferensi lokal, dan pipeline vektor semantik."
+    }
+  },
+  "projects": {
+    "title": "Proyek Pilihan",
+    "list": [
+      {
+        "title": "Basic RESTful API in PHP",
+        "desc": "API REST dasar yang dibangun dalam PHP native dengan MySQL, mendemonstrasikan routing manual, prepared statement PDO, dan formatting JSON yang bersih.",
+        "category": "BACKEND",
+        "tags": ["PHP", "MySQL", "PDO", "Composer"],
+        "url": "https://github.com/FarrelAD/Basic-PHP-RESTful-API"
+      },
+      {
+        "title": "Luminous IoT",
+        "desc": "Dashboard monitoring IoT real-time yang menjembatani telemetri sensor MQTT dengan aplikasi web Symfony, dilengkapi gauge live, chart timeline, dan kontrol device dua arah.",
+        "category": "BACKEND & IoT",
+        "tags": ["PHP", "Symfony", "MQTT", "MySQL", "Docker"],
+        "url": "https://github.com/FarrelAD/PHP-IoT-MQTT"
+      },
+      {
+        "title": "PrintX",
+        "desc": "Tool mail merge berbasis browser yang menghasilkan PDF siap cetak dari data spreadsheet dan template desain, dengan editor canvas drag-and-drop dan rendering 300 DPI.",
+        "category": "FULL-STACK TOOL",
+        "tags": ["React", "TypeScript", "Konva", "jsPDF", "Tailwind"],
+        "url": "https://github.com/FarrelAD/PrintX"
+      },
+      {
+        "title": "IoT Smart Farming API",
+        "desc": "Platform NestJS yang sepenuhnya terdockerisasi mensimulasikan sistem IoT smart farming dengan ingest telemetri MQTT, penyimpanan time-series TimescaleDB, dan deployment CI/CD otomatis.",
+        "category": "BACKEND & IoT",
+        "tags": ["NestJS", "Docker", "TimescaleDB", "MQTT", "Grafana"],
+        "url": "https://github.com/FarrelAD/IOT-PROTO-SAMPLE"
+      },
+      {
+        "title": "JavaScript Linear Regression",
+        "desc": "Model linear regression dari nol dalam JavaScript murni dengan antarmuka CLI dan web, dilengkapi visualisasi Chart.js dan tanpa dependensi library ML.",
+        "category": "MACHINE LEARNING",
+        "tags": ["JavaScript", "Chart.js", "Node.js", "Tailwind"],
+        "url": "https://github.com/FarrelAD/JavaScript-Linear-Regression"
+      },
+      {
+        "title": "Crowd Counting Model Deployment",
+        "desc": "Model crowd counting PyTorch yang di-deploy melalui Flask, FastAPI, dan Express.js dengan konversi ONNX, dilengkapi web UI drag-and-drop untuk deteksi orang real-time.",
+        "category": "MACHINE LEARNING",
+        "tags": ["PyTorch", "FastAPI", "Flask", "Express.js", "ONNX"],
+        "url": "https://github.com/FarrelAD/PyTorch-Crowd-Counting-Model-Deployment"
+      }
+    ]
+  },
+  "contact": {
+    "cta": "Mari berkolaborasi.",
+    "sub": "Silakan hubungi saya untuk diskusi proyek, review desain sistem, atau kolaborasi data pipeline.",
+    "email": "fad.farrel@gmail.com"
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Skills",
+    "contact": "Contact",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "FARREL AD",
+    "subtitle": "BACKEND SYSTEMS / IoT / DATA ENGINEERING",
+    "tagline": "I build backend systems, IoT platforms, and data engineering solutions -- with a growing interest in machine learning."
+  },
+  "pillars": {
+    "backend": {
+      "title": "Backend Engineering",
+      "desc": "Designing resilient backend architectures, optimizing relational database schemas, and building high-performance REST APIs with PHP and Node.js."
+    },
+    "data": {
+      "title": "Data Engineering",
+      "desc": "Structuring high-throughput ETL workflows, managing time-series databases, and building real-time telemetry ingestion pipelines."
+    },
+    "ai": {
+      "title": "Artificial Intelligence",
+      "desc": "Exploring machine learning model deployment, local inference engines, and semantic vector pipelines."
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "list": [
+      {
+        "title": "Basic RESTful API in PHP",
+        "desc": "A foundational REST API built in native PHP with MySQL, demonstrating manual routing, PDO prepared statements, and clean JSON response formatting.",
+        "category": "BACKEND",
+        "tags": ["PHP", "MySQL", "PDO", "Composer"],
+        "url": "https://github.com/FarrelAD/Basic-PHP-RESTful-API"
+      },
+      {
+        "title": "Luminous IoT",
+        "desc": "A real-time IoT monitoring dashboard bridging MQTT sensor telemetry with a Symfony web application, featuring live gauges, timeline charts, and bidirectional device control.",
+        "category": "BACKEND & IoT",
+        "tags": ["PHP", "Symfony", "MQTT", "MySQL", "Docker"],
+        "url": "https://github.com/FarrelAD/PHP-IoT-MQTT"
+      },
+      {
+        "title": "PrintX",
+        "desc": "A browser-based mail merge tool that generates print-ready PDFs from spreadsheet data and design templates, with a visual drag-and-drop canvas editor and 300 DPI rendering.",
+        "category": "FULL-STACK TOOL",
+        "tags": ["React", "TypeScript", "Konva", "jsPDF", "Tailwind"],
+        "url": "https://github.com/FarrelAD/PrintX"
+      },
+      {
+        "title": "IoT Smart Farming API",
+        "desc": "A fully dockerized NestJS platform simulating a smart farming IoT system with MQTT telemetry ingestion, TimescaleDB time-series storage, and automated CI/CD deployment.",
+        "category": "BACKEND & IoT",
+        "tags": ["NestJS", "Docker", "TimescaleDB", "MQTT", "Grafana"],
+        "url": "https://github.com/FarrelAD/IOT-PROTO-SAMPLE"
+      },
+      {
+        "title": "JavaScript Linear Regression",
+        "desc": "A from-scratch linear regression model in pure JavaScript with CLI and web interfaces, featuring Chart.js visualization and zero ML library dependencies.",
+        "category": "MACHINE LEARNING",
+        "tags": ["JavaScript", "Chart.js", "Node.js", "Tailwind"],
+        "url": "https://github.com/FarrelAD/JavaScript-Linear-Regression"
+      },
+      {
+        "title": "Crowd Counting Model Deployment",
+        "desc": "A PyTorch crowd counting model deployed across Flask, FastAPI, and Express.js with ONNX conversion, featuring a drag-and-drop web UI for real-time people detection.",
+        "category": "MACHINE LEARNING",
+        "tags": ["PyTorch", "FastAPI", "Flask", "Express.js", "ONNX"],
+        "url": "https://github.com/FarrelAD/PyTorch-Crowd-Counting-Model-Deployment"
+      }
+    ]
+  },
+  "contact": {
+    "cta": "Let's collaborate.",
+    "sub": "Feel free to reach out for project discussions, system design review, or data pipeline collaborations.",
+    "email": "fad.farrel@gmail.com"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}
