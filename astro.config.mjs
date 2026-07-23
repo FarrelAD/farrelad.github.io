@@ -5,6 +5,7 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
+    site: 'htps://farrelad.com',
     integrations: [icon()],
     vite: {
         plugins: [
