@@ -84,3 +84,18 @@
     margin-bottom: 2.5rem;
   }
 }
+
+/* Filter & Search Active States */
+.filter-btn.active,
+.blog-tag-btn.active,
+.project-cat-btn.active {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.blog-tag-btn.active:hover,
+.project-cat-btn.active:hover {
+  background-color: #262626;
+  border-color: #262626;
+}
