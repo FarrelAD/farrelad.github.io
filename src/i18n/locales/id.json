@@ -62,6 +62,13 @@
         "category": "MACHINE LEARNING",
         "tags": ["JavaScript", "Chart.js", "Node.js", "Tailwind"],
         "url": "https://github.com/FarrelAD/JavaScript-Linear-Regression"
+      },
+      {
+        "title": "Crowd Counting Model Deployment",
+        "desc": "Model crowd counting PyTorch yang di-deploy melalui Flask, FastAPI, dan Express.js dengan konversi ONNX, dilengkapi web UI drag-and-drop untuk deteksi orang real-time.",
+        "category": "MACHINE LEARNING",
+        "tags": ["PyTorch", "FastAPI", "Flask", "Express.js", "ONNX"],
+        "url": "https://github.com/FarrelAD/PyTorch-Crowd-Counting-Model-Deployment"
       }
     ]
   },
