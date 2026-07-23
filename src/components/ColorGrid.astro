@@ -12,9 +12,7 @@
 <style>
   .color-grid {
     width: 100%;
-    height: 50vh;
-    min-height: 240px;
-    max-height: 480px;
+    height: 100%;
     background: #000;
     display: grid;
     grid-template-columns: repeat(14, 1fr);
@@ -33,16 +31,12 @@
   @media (max-width: 768px) {
     .color-grid {
       grid-template-columns: repeat(9, 1fr);
-      height: 40vh;
-      min-height: 180px;
     }
   }
 
   @media (max-width: 480px) {
     .color-grid {
       grid-template-columns: repeat(6, 1fr);
-      height: 35vh;
-      min-height: 140px;
     }
   }
 </style>
