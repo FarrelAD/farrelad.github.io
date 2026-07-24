@@ -7,7 +7,7 @@ interface Props {
 
 const { locale } = Astro.props;
 
-const canonicalUrl = new URL(Astro.url.pathname, 'https://farrelad.github.io').toString();
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const currentPath = Astro.url.pathname;
 ---
 
@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
 		<meta property="og:image" content="/images/og-image.jpg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:url" content="https://farrelad.github.io" />
+		<meta property="og:url" content={canonicalUrl} />
 		
 		<!-- Theme and Colors -->
 		<meta name="theme-color" content="#0ea5e9" />
@@ -59,7 +59,7 @@ const currentPath = Astro.url.pathname;
 				"name": "Farrel AD",
 				"jobTitle": "Full Stack Developer",
 				"description": "Full Stack Developer specializing in web development, mobile apps, machine learning, and cloud computing.",
-				"url": "https://farrelad.github.io",
+				"url": "https://farrelad.com",
 				"email": "mailto:fad.farrel@gmail.com",
 				"sameAs": [
 					"https://linkedin.com/in/farrelad",

@@ -1,0 +1,143 @@
+---
+import { Icon } from 'astro-icon/components';
+import { useTranslations } from '../i18n/utils';
+import en from '../i18n/locales/en.json';
+import id from '../i18n/locales/id.json';
+
+interface Props {
+  locale: 'en' | 'id';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const projectsList = locale === 'en' ? en.projects.list : id.projects.list;
+const allCategories = [...new Set(projectsList.map(p => p.category))].sort();
+
+const searchPlaceholder = locale === 'en' ? 'Search projects...' : 'Cari proyek...';
+const allLabel = locale === 'en' ? 'All' : 'Semua';
+const noResultsText = locale === 'en' ? 'No projects match your search.' : 'Tidak ada proyek yang cocok.';
+---
+
+<section id="projects" class="py-20 px-6 md:px-12 bg-white text-black transition-colors duration-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase mb-12">
+      {t('projects.title').toUpperCase()}
+    </h2>
+
+    <div class="mb-8 space-y-4">
+      <div class="relative">
+        <Icon name="mdi:magnify" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
+        <input 
+          type="text" 
+          id="project-search"
+          placeholder={searchPlaceholder}
+          class="w-full font-mono text-sm bg-neutral-50 border border-neutral-200 rounded pl-9 pr-4 py-2.5 text-black placeholder:text-neutral-400 focus:outline-none focus:border-black transition-colors"
+        />
+      </div>
+      <div class="flex flex-wrap gap-1.5">
+        <button 
+          class="project-cat-btn active font-mono text-[10px] font-bold px-2.5 py-1 rounded border border-neutral-200 bg-neutral-50 text-neutral-500 hover:border-black hover:text-black transition-colors"
+          data-category="all"
+        >
+          {allLabel}
+        </button>
+        {allCategories.map(cat => (
+          <button 
+            class="project-cat-btn font-mono text-[10px] font-bold px-2.5 py-1 rounded border border-neutral-200 bg-neutral-50 text-neutral-500 hover:border-black hover:text-black transition-colors"
+            data-category={cat.toLowerCase()}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <p id="project-no-results" class="text-neutral-500 font-mono text-sm hidden mb-6">
+      {noResultsText}
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="project-grid">
+      {projectsList.map(project => (
+        <a 
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block border border-neutral-200 hover:border-black p-8 rounded bg-white hover:shadow-sm transition-all duration-200 relative overflow-hidden project-card"
+          data-title={project.title.toLowerCase()}
+          data-desc={project.desc.toLowerCase()}
+          data-category={project.category.toLowerCase()}
+          data-tags={project.tags.join(',').toLowerCase()}
+        >
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] font-bold text-neutral-400 tracking-widest uppercase">
+                {project.category}
+              </span>
+              <Icon name="mdi:open-in-new" class="w-4 h-4 text-neutral-400 group-hover:text-black transition-all duration-200 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
+            
+            <h3 class="text-xl font-bold tracking-tight text-black">
+              {project.title}
+            </h3>
+            
+            <p class="text-sm text-neutral-600 leading-relaxed">
+              {project.desc}
+            </p>
+            
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              {project.tags.map(tag => (
+                <span class="font-mono text-[10px] font-bold text-neutral-500 bg-neutral-50 border border-neutral-200 px-2 py-0.5 rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('project-search') as HTMLInputElement;
+    const noResults = document.getElementById('project-no-results') as HTMLParagraphElement;
+    const grid = document.getElementById('project-grid') as HTMLDivElement;
+    const cards = Array.from(document.querySelectorAll('.project-card')) as HTMLElement[];
+    const catBtns = Array.from(document.querySelectorAll('.project-cat-btn')) as HTMLButtonElement[];
+
+    let activeCategory = 'all';
+
+    function filterProjects() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const title = card.dataset.title || '';
+        const desc = card.dataset.desc || '';
+        const tags = card.dataset.tags || '';
+        const category = card.dataset.category || '';
+
+        const matchesSearch = !query || title.includes(query) || desc.includes(query) || tags.includes(query);
+        const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+        card.style.display = matchesSearch && matchesCategory ? '' : 'none';
+      });
+
+      const visible = cards.filter(c => c.style.display !== 'none');
+      noResults.classList.toggle('hidden', visible.length > 0);
+      grid.classList.toggle('hidden', visible.length === 0);
+    }
+
+    searchInput.addEventListener('input', filterProjects);
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.category || 'all';
+        filterProjects();
+      });
+    });
+  });
+</script>

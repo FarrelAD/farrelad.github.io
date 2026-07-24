@@ -78,6 +78,19 @@
     "sub": "Silakan hubungi saya untuk diskusi proyek, review desain sistem, atau kolaborasi data pipeline.",
     "email": "fad.farrel@gmail.com"
   },
+  "blog": {
+    "title": "BLOG TEKNIK",
+    "subtitle": "Menulis tentang Arsitektur Backend, Sistem Data, dan Integrasi AI.",
+    "searchPlaceholder": "Cari artikel...",
+    "sortNewest": "Terbaru",
+    "sortOldest": "Terlama",
+    "readPost": "BACA ARTIKEL",
+    "backToBlog": "KEMBALI KE BLOG",
+    "onThisPage": "Di halaman ini",
+    "noResults": "Tidak ada artikel yang cocok.",
+    "noPosts": "Belum ada postingan blog tersedia.",
+    "resultsCount": "artikel ditemukan"
+  },
   "footer": {
     "rights": "Hak cipta dilindungi"
   }

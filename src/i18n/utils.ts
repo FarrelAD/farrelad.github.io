@@ -9,6 +9,10 @@ export function useTranslations(locale: Locale) {
   const dict = translations[locale] || en;
   return function t(key: string): string {
     const value = key.split('.').reduce((obj: any, keyPart) => obj?.[keyPart], dict);
-    return typeof value === 'string' ? value : key;
+    if (typeof value !== 'string') {
+      if (import.meta.env.DEV) console.warn(`Missing translation: ${key} [${locale}]`);
+      return key;
+    }
+    return value;
   };
 }

@@ -1,0 +1,207 @@
+---
+import { Icon } from 'astro-icon/components';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import { useTranslations } from '../i18n/utils';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  locale: 'en' | 'id';
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { locale, posts } = Astro.props;
+const t = useTranslations(locale);
+
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allTags = [...new Set(sortedPosts.flatMap(post => post.data.tags))].sort();
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString(locale === 'en' ? 'en-US' : 'id-ID', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+
+const blogPrefix = locale === 'en' ? '/blog' : '/id/blog';
+---
+
+<Layout locale={locale}>
+  <Navbar locale={locale} />
+  
+  <main class="pt-36 pb-20 px-6 md:px-12 bg-white text-black min-h-screen">
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4 mb-10">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter leading-none text-black">
+          {t('blog.title')}
+        </h1>
+        <p class="font-mono text-xs md:text-sm text-neutral-500 uppercase tracking-widest">
+          {t('blog.subtitle')}
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 mb-6">
+        <div class="relative flex-1">
+          <Icon name="mdi:magnify" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
+          <input 
+            type="text" 
+            id="blog-search"
+            placeholder={t('blog.searchPlaceholder')}
+            class="w-full font-mono text-sm bg-neutral-50 border border-neutral-200 rounded pl-9 pr-4 py-2.5 text-black placeholder:text-neutral-400 focus:outline-none focus:border-black transition-colors"
+          />
+        </div>
+        <button 
+          id="blog-sort-btn"
+          class="filter-btn font-mono text-xs font-bold px-4 py-2.5 border border-neutral-200 rounded bg-neutral-50 hover:bg-neutral-100 text-neutral-600 transition-colors whitespace-nowrap inline-flex items-center gap-1.5"
+        >
+          <Icon name="mdi:arrow-down" class="w-3.5 h-3.5" />
+          <span id="blog-sort-label" data-newest={t('blog.sortNewest')} data-oldest={t('blog.sortOldest')}>{t('blog.sortNewest')}</span>
+        </button>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 mb-8">
+        {allTags.map(tag => (
+          <button 
+            class="blog-tag-btn font-mono text-[10px] font-bold px-2.5 py-1 rounded border border-neutral-200 bg-neutral-50 text-neutral-500 hover:border-black hover:text-black transition-colors"
+            data-tag={tag}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <p id="blog-results-count" class="font-mono text-xs text-neutral-400 mb-6 hidden">
+        <span id="blog-results-num">0</span> {t('blog.resultsCount')}
+      </p>
+
+      <div class="space-y-10 border-t border-neutral-200 pt-10" id="blog-list">
+        {sortedPosts.length === 0 ? (
+          <p class="text-neutral-500 font-mono text-sm">{t('blog.noPosts')}</p>
+        ) : (
+          sortedPosts.map(post => (
+            <article 
+              class="group space-y-3 blog-item"
+              data-title={post.data.title.toLowerCase()}
+              data-desc={post.data.description.toLowerCase()}
+              data-tags={post.data.tags.join(',').toLowerCase()}
+              data-date={post.data.pubDate.valueOf()}
+            >
+              <div class="flex items-center gap-4 text-xs font-mono text-neutral-400">
+                <span>{formatDate(post.data.pubDate)}</span>
+                <span>•</span>
+                <div class="flex gap-2">
+                  {post.data.tags.map(tag => (
+                    <span class="text-[10px] bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200/50 text-neutral-600">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <a href={`${blogPrefix}/${post.id}`} class="block">
+                <h2 class="text-2xl font-bold tracking-tight text-black group-hover:underline transition-all">
+                  {post.data.title}
+                </h2>
+              </a>
+              
+              <p class="text-neutral-600 text-sm md:text-base leading-relaxed max-w-2xl">
+                {post.data.description}
+              </p>
+              
+              <div class="pt-2">
+                <a 
+                  href={`${blogPrefix}/${post.id}`} 
+                  class="font-mono text-xs font-bold text-neutral-700 hover:text-black inline-flex items-center gap-1 group-hover:underline"
+                >
+                  {t('blog.readPost')}
+                  <Icon name="mdi:chevron-right" class="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
+            </article>
+          ))
+        )}
+      </div>
+
+      <p id="blog-no-results" class="text-neutral-500 font-mono text-sm hidden">
+        {t('blog.noResults')}
+      </p>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('blog-search') as HTMLInputElement;
+      const sortBtn = document.getElementById('blog-sort-btn') as HTMLButtonElement;
+      const sortLabel = document.getElementById('blog-sort-label') as HTMLSpanElement;
+      const resultsCount = document.getElementById('blog-results-count') as HTMLParagraphElement;
+      const resultsNum = document.getElementById('blog-results-num') as HTMLSpanElement;
+      const noResults = document.getElementById('blog-no-results') as HTMLParagraphElement;
+      const blogList = document.getElementById('blog-list') as HTMLDivElement;
+      const items = Array.from(document.querySelectorAll('.blog-item')) as HTMLElement[];
+      const tagBtns = Array.from(document.querySelectorAll('.blog-tag-btn')) as HTMLButtonElement[];
+
+      let activeTags = new Set<string>();
+      let sortAsc = false;
+
+      function filterAndSort() {
+        const query = searchInput.value.toLowerCase().trim();
+
+        items.forEach(item => {
+          const title = item.dataset.title || '';
+          const desc = item.dataset.desc || '';
+          const tags = (item.dataset.tags || '').split(',');
+
+          const matchesSearch = !query || title.includes(query) || desc.includes(query) || tags.some(t => t.includes(query));
+          const matchesTags = activeTags.size === 0 || [...activeTags].every(t => tags.includes(t.toLowerCase()));
+
+          item.style.display = matchesSearch && matchesTags ? '' : 'none';
+        });
+
+        const visible = items.filter(i => i.style.display !== 'none');
+
+        if (sortAsc) {
+          visible.sort((a, b) => Number(a.dataset.date) - Number(b.dataset.date));
+        } else {
+          visible.sort((a, b) => Number(b.dataset.date) - Number(a.dataset.date));
+        }
+
+        visible.forEach(item => blogList.appendChild(item));
+
+        const hasFilter = query || activeTags.size > 0;
+        if (hasFilter) {
+          resultsNum.textContent = String(visible.length);
+          resultsCount.classList.remove('hidden');
+          noResults.classList.toggle('hidden', visible.length > 0);
+          blogList.classList.toggle('hidden', visible.length === 0);
+        } else {
+          resultsCount.classList.add('hidden');
+          noResults.classList.add('hidden');
+          blogList.classList.remove('hidden');
+        }
+      }
+
+      searchInput.addEventListener('input', filterAndSort);
+
+      sortBtn.addEventListener('click', () => {
+        sortAsc = !sortAsc;
+        sortLabel.textContent = sortAsc ? sortLabel.dataset.oldest! : sortLabel.dataset.newest!;
+        filterAndSort();
+      });
+
+      tagBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tag = btn.dataset.tag || '';
+          if (activeTags.has(tag)) {
+            activeTags.delete(tag);
+            btn.classList.remove('active');
+          } else {
+            activeTags.add(tag);
+            btn.classList.add('active');
+          }
+          filterAndSort();
+        });
+      });
+    });
+  </script>
+</Layout>

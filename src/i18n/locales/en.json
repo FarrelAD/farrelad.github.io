@@ -78,6 +78,19 @@
     "sub": "Feel free to reach out for project discussions, system design review, or data pipeline collaborations.",
     "email": "fad.farrel@gmail.com"
   },
+  "blog": {
+    "title": "TECHNICAL BLOG",
+    "subtitle": "Writing about Backend Architecture, Data Systems, and AI Integration.",
+    "searchPlaceholder": "Search posts...",
+    "sortNewest": "Newest First",
+    "sortOldest": "Oldest First",
+    "readPost": "READ POST",
+    "backToBlog": "BACK TO BLOG",
+    "onThisPage": "On this page",
+    "noResults": "No posts match your search.",
+    "noPosts": "No blog posts available yet.",
+    "resultsCount": "posts found"
+  },
   "footer": {
     "rights": "All rights reserved"
   }

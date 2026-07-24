@@ -1,14 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AppHeader from '../components/AppHeader.astro';
-import SectionAbout from '../components/SectionAbout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
 ---
 
 <Layout locale="en">
 	<div id="home">
-		<AppHeader locale="en" />
+		<Navbar locale="en" />
 		<main>
-			<SectionAbout locale="en" />
+			<Hero locale="en" />
+			<Skills locale="en" />
+			<Experience locale="en" />
+			<hr class="border-neutral-200 max-w-6xl mx-auto" />
+			<Projects locale="en" />
+			<hr class="border-neutral-200 max-w-6xl mx-auto" />
+			<Contact locale="en" />
 		</main>
 	</div>
 </Layout>
