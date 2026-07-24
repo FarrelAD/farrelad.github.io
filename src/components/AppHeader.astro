@@ -12,6 +12,7 @@ const t = useTranslations(locale);
 const prefix = locale === 'en' ? '' : '/id';
 const homeUrl = prefix || '/';
 const skillsUrl = `${prefix}/#skills`;
+const experienceUrl = `${prefix}/#experience`;
 const projectsUrl = `${prefix}/#projects`;
 const contactUrl = `${prefix}/#contact`;
 const blogUrl = `${prefix}/blog`;
@@ -54,6 +55,11 @@ const profiles = [
         <li>
           <a href={skillsUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
             {t('nav.about').toUpperCase()}
+          </a>
+        </li>
+        <li>
+          <a href={experienceUrl} class="text-sm font-mono text-neutral-400 hover:text-black transition-colors">
+            {t('nav.experience').toUpperCase()}
           </a>
         </li>
         <li>
@@ -158,6 +164,14 @@ const profiles = [
             class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
           >
             {t('nav.about').toUpperCase()}
+          </a>
+        </li>
+        <li>
+          <a 
+            href={experienceUrl} 
+            class="mobile-nav-link block font-mono text-sm text-neutral-500 hover:text-black"
+          >
+            {t('nav.experience').toUpperCase()}
           </a>
         </li>
         <li>

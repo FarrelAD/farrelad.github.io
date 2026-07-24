@@ -44,6 +44,58 @@ const socialLinks = [
   { name: 'Kaggle', url: 'https://kaggle.com/farrelad', icon: 'simple-icons:kaggle' },
   { name: 'Hugging Face', url: 'https://huggingface.co/FarrelAD', icon: 'simple-icons:huggingface' }
 ];
+
+const experienceList = [
+  {
+    role: 'Research Assistant - Backend Developer',
+    company: 'RECLICKS FINCAPES IoT Smart Farming Sumenep',
+    date: 'Jun 2026 — Dec 2026',
+    description: 'Solar-powered smart farming research project funded by RECLICKS (a climate finance program by the Purnomo Yusgiantoro Center) in collaboration with the FINCAPES Project, led by the University of Waterloo, Canada, and funded by the Government of Canada.',
+    responsibilities: [
+      'Working as a Backend Developer bridging IoT systems with core software to ensure seamless data integration for the end-user application',
+      'Designed and implemented backend APIs for ingesting and serving real-time sensor data from solar-powered farming infrastructure'
+    ],
+    tags: ['FastAPI', 'NestJS', 'Docker', 'Kubernetes', 'IoT']
+  },
+  {
+    role: 'Research Assistant - Backend Developer',
+    company: 'Building Energy Management System (BEMS) - ELPI',
+    date: 'May 2026 — Oct 2026',
+    description: 'Collaborative research project between the Electrical Engineering and Information Technology departments of POLINEMA, partnering with industry leader PT Pelayaran Nasional Ekalya Purnamasari (ELPI). The project focuses on developing a smart system to monitor electrical energy consumption relative to real-time human occupancy.',
+    responsibilities: [
+      'Responsible for bridging and integrating the IoT systems developed by the Electrical Engineering team into a web-based user application',
+      'System implemented at the ELPI Building in Tegalsari, Surabaya'
+    ],
+    tags: ['PostgreSQL', 'TimescaleDB', 'NestJS', 'Docker']
+  },
+  {
+    company: 'PT Peruri Wira Timur (PERURI SECURITY PRINTING)',
+    date: 'Jan 2026 — Present',
+    projects: [
+      {
+        title: 'HR Application',
+        role: 'Fullstack Developer Intern',
+        date: 'Jan 2026 — Jun 2026',
+        description: 'Developed and optimized a Laravel-based internal HR application to digitalize employee administrative processes, including attendance, employee agendas, and reimbursements.',
+        responsibilities: [
+          'Enhanced existing features and ensured the system aligns with the company\'s operational workflows',
+          'Built and maintained both frontend interfaces and backend logic for the internal HR platform'
+        ],
+        tags: ['Laravel', 'MySQL', 'JavaScript', 'Full Stack']
+      },
+      {
+        title: 'PPIC/QC System',
+        role: 'Backend Developer Intern',
+        date: 'Jul 2026 — Present',
+        description: 'Building a web-based PPIC (Production Planning and Inventory Control) and QC (Quality Control) system from scratch, transforming traditional paper-based and Excel-driven workflows into a modern, integrated digital platform.',
+        responsibilities: [
+          'Designed and developed backend architecture, integrating previously siloed processes into a unified web application'
+        ],
+        tags: ['SvelteKit', 'Bun', 'MySQL', 'Backend']
+      }
+    ]
+  }
+];
 ---
 
 <!-- Hero Section with Color Grid Background -->
@@ -127,6 +179,116 @@ const socialLinks = [
           </div>
         );
       })}
+    </div>
+  </div>
+</section>
+
+<!-- Experience Timeline Section -->
+<section id="experience" class="py-20 px-6 md:px-12 bg-white text-black transition-colors duration-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase mb-12">
+      {t('nav.experience').toUpperCase()}
+    </h2>
+
+    <div class="relative">
+      <!-- Vertical line — hidden on mobile -->
+      <div class="hidden md:block absolute left-[5px] top-2 bottom-2 w-px bg-neutral-200"></div>
+
+      <div class="space-y-12">
+        {experienceList.map((exp) => (
+          <div class="relative md:pl-10">
+            <!-- Timeline dot — hidden on mobile -->
+            <div class="hidden md:block absolute left-0 top-2 w-[11px] h-[11px] rounded-full border-2 border-neutral-300 bg-white z-10"></div>
+
+            <div class="border border-neutral-200 rounded p-6 md:p-8 bg-neutral-50/20 hover:border-black hover:shadow-sm transition-all duration-200">
+              {exp.projects ? (
+                <!-- Multi-project card (LinkedIn-style) -->
+                <div>
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                    <h3 class="text-lg font-bold tracking-tight text-black">
+                      {exp.company}
+                    </h3>
+                    <span class="font-mono text-[11px] font-bold text-neutral-400 tracking-wider whitespace-nowrap">
+                      {exp.date}
+                    </span>
+                  </div>
+                  {exp.projects.map((project, i) => (
+                    <div>
+                      {i > 0 && <hr class="border-neutral-200 my-6" />}
+                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                        <div>
+                          <h4 class="text-base font-bold tracking-tight text-black">
+                            {project.title}
+                          </h4>
+                          <p class="font-mono text-xs text-neutral-500 mt-0.5">
+                            {project.role}
+                          </p>
+                        </div>
+                        <span class="font-mono text-[11px] font-bold text-neutral-400 tracking-wider whitespace-nowrap">
+                          {project.date}
+                        </span>
+                      </div>
+                      <p class="text-sm text-neutral-600 leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+                      <ul class="space-y-1.5 mb-5">
+                        {project.responsibilities.map((item) => (
+                          <li class="flex items-start gap-2 text-sm text-neutral-600 leading-relaxed">
+                            <span class="mt-2 w-1 h-1 rounded-full bg-neutral-300 shrink-0"></span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                      <div class="flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                          <span class="font-mono text-[10px] font-bold text-neutral-500 bg-neutral-100/80 px-2 py-0.5 rounded border border-neutral-200/50">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <!-- Single-role card (original layout) -->
+                <div>
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                    <div>
+                      <h3 class="text-lg font-bold tracking-tight text-black">
+                        {exp.role}
+                      </h3>
+                      <p class="text-sm text-neutral-500 font-medium">
+                        {exp.company}
+                      </p>
+                    </div>
+                    <span class="font-mono text-[11px] font-bold text-neutral-400 tracking-wider whitespace-nowrap">
+                      {exp.date}
+                    </span>
+                  </div>
+                  <p class="text-sm text-neutral-600 leading-relaxed mb-4">
+                    {exp.description}
+                  </p>
+                  <ul class="space-y-1.5 mb-5">
+                    {exp.responsibilities.map((item) => (
+                      <li class="flex items-start gap-2 text-sm text-neutral-600 leading-relaxed">
+                        <span class="mt-2 w-1 h-1 rounded-full bg-neutral-300 shrink-0"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-200">
+                    {exp.tags.map((tag) => (
+                      <span class="font-mono text-[10px] font-bold text-neutral-500 bg-neutral-100/80 px-2 py-0.5 rounded border border-neutral-200/50">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
